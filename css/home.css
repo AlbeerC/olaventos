@@ -5,6 +5,8 @@ main .hero {
     background-position: center center;
     width: 100%;
     height: 65vh;
+    position: relative;
+    overflow: visible;
 }
 
 main .hero .hero-box {
@@ -13,8 +15,9 @@ main .hero .hero-box {
     background-color: #ffffff;
     padding: 1rem 1rem 5rem 1rem;
     position: absolute;
-    top: 55%;
+    top: 100%; /* Coloca la caja justo debajo del .hero */
     left: 10%;
+    transform: translateY(-70%); /* Sube la mitad de la altura de la caja */
 }
 
 main .hero .hero-box h2 {
