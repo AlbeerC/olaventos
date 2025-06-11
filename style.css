@@ -138,6 +138,7 @@ header ul li a:hover {
   
   header .imagen-container {
     order: 2;
+    padding-top: .5rem;
   }
 
   .header-buttons {
