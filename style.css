@@ -52,10 +52,7 @@ header {
     align-items: center;
     padding: 2rem 5rem;
     border-bottom: solid 1px #e1e1e1;
-
-    @media (max-width: 768px) {
-      flex-direction: column;
-    }
+    flex-wrap: wrap;
 }
 
 header img {
@@ -101,6 +98,59 @@ header ul li a:hover {
     opacity: 0.8;
 }
 
+/* Menú hamburguesa */
+.menu-hamburguesa {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  display: none;
+  cursor: pointer;
+  color: #000000;
+}
+
+/* Ocultamos el menú en mobile por defecto */
+@media (max-width: 768px) {
+  .menu-hamburguesa {
+    display: block;
+    order: 1;
+  }
+
+  header {
+    padding: 2rem;
+  }
+
+  header img {
+    width: 12rem;
+  }
+
+  .menu-nav {
+    display: none;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 2rem;
+    order: 4;
+    align-items: flex-start;
+  }
+
+  .menu-nav.activo {
+    display: flex;
+  }
+  
+  header .imagen-container {
+    order: 2;
+  }
+
+  .header-buttons {
+    order: 3;
+    gap: 0;
+  }
+
+  .header-buttons .login {
+    font-size: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+}
+
 
 /* Estilos footer */
 footer {
@@ -121,4 +171,13 @@ footer .iconos {
 footer .iconos i {
   font-size: 3rem;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+  footer {
+    font-size: 1.4rem;
+    padding: 2rem;
+    gap: 2rem;
+  }
 }

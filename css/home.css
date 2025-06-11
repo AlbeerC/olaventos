@@ -47,7 +47,7 @@ main .hero .hero-box a {
 
 @media (max-width: 768px) {
     main .hero .hero-box {
-        max-width: 60%;
+        max-width: 70%;
     }
 }
 
