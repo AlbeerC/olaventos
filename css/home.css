@@ -35,6 +35,22 @@ main .hero .hero-box a {
     padding: 1rem 2rem;
 }
 
+@media (max-width: 1200px) {
+    main .hero {
+        height: 40vh;
+    }
+
+    main .hero .hero-box {
+        max-width: 40%
+    }
+}
+
+@media (max-width: 768px) {
+    main .hero .hero-box {
+        max-width: 60%;
+    }
+}
+
 main .main-text {
     font-size: 2rem;
     display: flex;
@@ -60,6 +76,16 @@ main .eventos-destacados h2 {
     font-size: 3rem;
 }
 
+@media (max-width: 1200px) {
+    main .eventos-destacados img {
+        width: 90%;
+    }
+
+    main .main-text p {
+        max-width: 90%;
+    }
+}
+
 main .organizador {
     background-color: #d9d9d995;
     color: #000000;
@@ -74,4 +100,10 @@ main .organizador a {
     font-weight: bold;
     margin-left: 1rem;
     font-size: 1.8rem;
+}
+
+@media (max-width: 1200px) {
+    main .organizador {
+        max-width: 90%;
+    }
 }
