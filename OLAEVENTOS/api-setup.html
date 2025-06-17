@@ -1,0 +1,124 @@
+<!-- Instrucciones para configurar Google Maps API -->
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración Google Maps API - OLAEVENTOS</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .step {
+            background: #f8fafc;
+            border-left: 4px solid #9333ea;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        .code {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+        .warning {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🗺️ Configuración de Google Maps API para OLAEVENTOS</h1>
+    
+    <p>Para que el mapa funcione correctamente, necesitas configurar Google Maps API. Sigue estos pasos:</p>
+    
+    <div class="step">
+        <h3>📝 Paso 1: Crear un proyecto en Google Cloud Console</h3>
+        <ol>
+            <li>Ve a <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a></li>
+            <li>Crea un nuevo proyecto o selecciona uno existente</li>
+            <li>Habilita la API de Google Maps JavaScript</li>
+        </ol>
+    </div>
+    
+    <div class="step">
+        <h3>🔑 Paso 2: Obtener tu API Key</h3>
+        <ol>
+            <li>Ve a "Credenciales" en el menú lateral</li>
+            <li>Haz clic en "Crear credenciales" → "Clave de API"</li>
+            <li>Copia tu clave de API</li>
+            <li>Configura las restricciones de dominio para mayor seguridad</li>
+        </ol>
+    </div>
+    
+    <div class="step">
+        <h3>⚙️ Paso 3: Configurar la API Key en el código</h3>
+        <p>Reemplaza <code>YOUR_API_KEY</code> en el archivo <code>index.html</code>:</p>
+        <div class="code">
+&lt;script async defer src="https://maps.googleapis.com/maps/api/js?key=<strong>TU_API_KEY_AQUI</strong>&callback=initMap&libraries=geometry"&gt;&lt;/script&gt;
+        </div>
+    </div>
+    
+    <div class="step">
+        <h3>🌍 Paso 4: APIs necesarias</h3>
+        <p>Asegúrate de habilitar estas APIs en Google Cloud Console:</p>
+        <ul>
+            <li>✅ Maps JavaScript API</li>
+            <li>✅ Geocoding API (opcional, para búsquedas)</li>
+            <li>✅ Places API (opcional, para autocompletado)</li>
+        </ul>
+    </div>
+    
+    <div class="warning">
+        <h3>⚠️ Importante</h3>
+        <ul>
+            <li><strong>Nunca expongas tu API Key</strong> en repositorios públicos</li>
+            <li>Configura <strong>restricciones de dominio</strong> en Google Cloud Console</li>
+            <li>Monitorea el <strong>uso y facturación</strong> regularmente</li>
+            <li>Google Maps ofrece <strong>$200 USD gratis</strong> por mes</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h3>🚀 Características implementadas</h3>
+        <ul>
+            <li>✅ <strong>Mapa interactivo real</strong> con coordenadas de Argentina</li>
+            <li>✅ <strong>Marcadores personalizados</strong> por categoría de evento</li>
+            <li>✅ <strong>InfoWindows</strong> con información detallada</li>
+            <li>✅ <strong>Filtros por ciudad</strong> que actualizan el mapa</li>
+            <li>✅ <strong>Integración con sidebar</strong> de eventos</li>
+            <li>✅ <strong>Direcciones a Google Maps</strong> para navegación</li>
+            <li>✅ <strong>Responsive design</strong> para móviles</li>
+            <li>✅ <strong>Manejo de errores</strong> si falla la carga</li>
+        </ul>
+    </div>
+    
+    <div class="step">
+        <h3>📍 Coordenadas reales implementadas</h3>
+        <ul>
+            <li><strong>Olavarría:</strong> -36.8927, -60.3225</li>
+            <li><strong>Tandil:</strong> -37.3217, -59.1332</li>
+            <li><strong>Azul:</strong> -36.7770, -59.8581</li>
+            <li><strong>La Plata:</strong> -34.9214, -57.9544</li>
+            <li><strong>Bolívar:</strong> -36.2354, -61.1198</li>
+        </ul>
+    </div>
+    
+    <h2>🎯 Resultado Final</h2>
+    <p>Una vez configurado, tendrás:</p>
+    <ul>
+        <li>🗺️ Mapa real de la región de Buenos Aires</li>
+        <li>📍 Marcadores precisos en cada ciudad</li>
+        <li>🎨 Iconos personalizados por categoría</li>
+        <li>📱 Experiencia móvil optimizada</li>
+        <li>🔄 Sincronización con filtros de ciudad</li>
+    </ul>
+</body>
+</html>

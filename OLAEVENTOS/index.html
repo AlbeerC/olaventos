@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLAEVENTOS - Descubre los Mejores Eventos en la Región</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <span class="logo-text">OLA<span class="logo-accent">EVENTOS</span></span>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="#eventos" class="nav-link">Eventos</a>
+                    <a href="#mapa" class="nav-link">
+                        <i class="fas fa-map-marker-alt"></i> Mapa
+                    </a>
+                    <a href="merchandising.html" class="nav-link">Tienda</a>
+                    <a href="#crear" class="nav-link">Crear Evento</a>
+                </nav>
+
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar eventos..." id="searchInput">
+                </div>
+
+                <div class="header-actions">
+                    <button class="icon-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge">2</span>
+                    </button>
+                    <div class="auth-buttons" id="authButtons">
+                        <a href="login.html" class="btn btn-ghost">Iniciar Sesión</a>
+                        <a href="registro.html" class="btn btn-primary">Registrarse</a>
+                    </div>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar eventos...">
+                </div>
+                <nav class="mobile-nav">
+                    <a href="#eventos" class="mobile-nav-link">Eventos</a>
+                    <a href="#mapa" class="mobile-nav-link">
+                        <i class="fas fa-map-marker-alt"></i> Mapa
+                    </a>
+                    <a href="merchandising.html" class="mobile-nav-link">Tienda</a>
+                    <a href="#crear" class="mobile-nav-link">Crear Evento</a>
+                </nav>
+                <div class="mobile-auth">
+                    <a href="login.html" class="btn btn-outline">Iniciar Sesión</a>
+                    <a href="registro.html" class="btn btn-primary">Registrarse</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    OLA<span class="hero-accent">EVENTOS</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Descubre, conecta y vive experiencias únicas en los mejores eventos de Olavarría, Tandil, Azul, La Plata y toda la región
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-white">
+                        <i class="fas fa-calendar-alt"></i>
+                        Explorar Eventos
+                    </button>
+                    <button class="btn btn-outline-white">
+                        <i class="fas fa-ticket-alt"></i>
+                        Crear Evento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section class="featured-events" id="eventos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Eventos Destacados</h2>
+                <p class="section-subtitle">Los eventos más populares que no te podés perder en toda la región</p>
+            </div>
+
+            <div class="events-grid" id="eventsGrid">
+                <!-- Events will be loaded by JavaScript -->
+            </div>
+
+            <div class="section-footer">
+                <button class="btn btn-outline">Ver Todos los Eventos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section" id="mapa">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Eventos Cerca Tuyo</h2>
+                <p class="section-subtitle">Encontrá eventos en Olavarría, Tandil, Azul, La Plata y ciudades cercanas</p>
+            </div>
+
+            <!-- City Filters -->
+            <div class="city-filters-map" style="margin-bottom: 2rem;">
+                <div class="city-filter-wrapper" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; align-items: center;">
+                    <span style="font-weight: 600; color: #374151;">Filtrar por ciudad:</span>
+                    <div class="city-buttons" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <button class="city-btn active" data-city="all" style="padding: 0.5rem 1rem; border: 1px solid #9333ea; background: #9333ea; color: white; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            Todas las ciudades
+                        </button>
+                        <button class="city-btn" data-city="olavarria" style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; background: white; color: #6b7280; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            Olavarría
+                        </button>
+                        <button class="city-btn" data-city="tandil" style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; background: white; color: #6b7280; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            Tandil
+                        </button>
+                        <button class="city-btn" data-city="azul" style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; background: white; color: #6b7280; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            Azul
+                        </button>
+                        <button class="city-btn" data-city="laplata" style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; background: white; color: #6b7280; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            La Plata
+                        </button>
+                        <button class="city-btn" data-city="bolivar" style="padding: 0.5rem 1rem; border: 1px solid #d1d5db; background: white; color: #6b7280; border-radius: 9999px; font-size: 0.875rem; cursor: pointer; transition: all 0.2s ease;">
+                            Bolívar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <!-- Google Maps Container -->
+                    <div id="googleMap" style="width: 100%; height: 500px; border-radius: 0.75rem; overflow: hidden;"></div>
+                    
+                    <!-- Map Loading State -->
+                    <div id="mapLoading" style="display: flex; align-items: center; justify-content: center; height: 500px; background: #f3f4f6; border-radius: 0.75rem;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #9333ea; margin-bottom: 1rem;"></i>
+                            <p style="color: #6b7280;">Cargando mapa...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-events-list">
+                    <h3>Eventos en el Mapa</h3>
+                    <div class="map-events" id="mapEvents">
+                        <!-- Map events will be loaded by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="upcoming-events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Próximos Eventos</h2>
+                <p class="section-subtitle">No te pierdas estos eventos que están por llegar</p>
+            </div>
+
+            <div class="upcoming-grid" id="upcomingGrid">
+                <!-- Upcoming events will be loaded by JavaScript -->
+            </div>
+
+            <div class="section-footer">
+                <button class="btn btn-outline">Ver Calendario Completo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Merchandising Preview -->
+    <section class="merchandising-preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Merchandising Oficial</h2>
+                <p class="section-subtitle">Llevate el recuerdo de tus eventos favoritos</p>
+            </div>
+
+            <div class="products-grid" id="productsPreview">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+
+            <div class="section-footer">
+                <a href="merchandising.html" class="btn btn-primary">Ver Toda la Tienda</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="newsletter-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para transformar tu experiencia de eventos?</h2>
+                <p>Sumate a miles de personas que ya están aprovechando lo mejor de los eventos en la región</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-white">
+                        Comenzar ahora
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline-white">Contactanos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <span class="logo-text">OLA<span class="logo-accent">EVENTOS</span></span>
+                    </div>
+                    <p class="footer-description">
+                        La plataforma líder en la región para descubrir y disfrutar de los mejores eventos.
+                    </p>
+                    <div class="footer-contact">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            contacto@olaeventos.com.ar
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            +54 2284 123-456
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Región de Buenos Aires, Argentina
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Eventos</h4>
+                    <ul>
+                        <li><a href="#">Música</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="#">Gastronomía</a></li>
+                        <li><a href="#">Deportes</a></li>
+                        <li><a href="#">Familiares</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Sobre nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Ayuda</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 OLAEVENTOS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <!-- Google Maps API - Reemplaza YOUR_API_KEY con tu clave real -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=geometry"></script>
+</body>
+</html>

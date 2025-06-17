@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Oficial - OLAEVENTOS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <a href="index.html">
+                        <div class="logo-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <span class="logo-text">OLA<span class="logo-accent">EVENTOS</span></span>
+                    </a>
+                </div>
+
+                <nav class="nav-desktop">
+                    <a href="index.html#eventos" class="nav-link">Eventos</a>
+                    <a href="index.html#mapa" class="nav-link">
+                        <i class="fas fa-map-marker-alt"></i> Mapa
+                    </a>
+                    <a href="merchandising.html" class="nav-link active">Tienda</a>
+                    <a href="#crear" class="nav-link">Crear Evento</a>
+                </nav>
+
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar productos..." id="productSearchInput">
+                </div>
+
+                <div class="header-actions">
+                    <button class="icon-btn" id="cartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge" id="cartCount">2</span>
+                    </button>
+                    <div class="auth-buttons">
+                        <a href="login.html" class="btn btn-ghost">Iniciar Sesión</a>
+                        <a href="registro.html" class="btn btn-primary">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="shop-hero">
+        <div class="container">
+            <div class="shop-hero-content">
+                <h1>Tienda Oficial OLAEVENTOS</h1>
+                <p>Llevate el espíritu de los mejores eventos con nuestro merchandising exclusivo</p>
+                <div class="shop-badges">
+                    <span class="badge-yellow">🎉 Envío gratis en compras +$15.000</span>
+                    <span class="badge-white">⚡ Entrega en Olavarría en 24-48hs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="shop-filters">
+        <div class="container">
+            <div class="filters-wrapper">
+                <div class="filters-left">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Buscar productos..." id="shopSearchInput">
+                    </div>
+                    <div class="filter-selects">
+                        <select id="categoryFilter">
+                            <option value="">Todas las categorías</option>
+                            <option value="ropa">Ropa</option>
+                            <option value="accesorios">Accesorios</option>
+                        </select>
+                        <select id="priceFilter">
+                            <option value="">Todos los precios</option>
+                            <option value="0-5000">$0 - $5.000</option>
+                            <option value="5000-15000">$5.000 - $15.000</option>
+                            <option value="15000+">$15.000+</option>
+                        </select>
+                        <button class="btn btn-outline" id="filtersBtn">
+                            <i class="fas fa-filter"></i> Filtros
+                        </button>
+                    </div>
+                </div>
+                <div class="filters-right">
+                    <span>Ordenar por:</span>
+                    <select id="sortFilter">
+                        <option value="popular">Más populares</option>
+                        <option value="price-low">Precio: menor a mayor</option>
+                        <option value="price-high">Precio: mayor a menor</option>
+                        <option value="newest">Más nuevos</option>
+                        <option value="rating">Mejor valorados</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="shop-products">
+        <div class="container">
+            <div class="products-grid" id="shopProductsGrid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+            <div class="load-more">
+                <button class="btn btn-outline" id="loadMoreBtn">Cargar Más Productos</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>¡No te pierdas nuestras ofertas!</h2>
+                <p>Suscribite y recibí un 10% de descuento en tu primera compra</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Tu email" id="newsletterEmail">
+                    <button class="btn btn-white">Suscribirse</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <span class="logo-text">OLA<span class="logo-accent">EVENTOS</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Merchandising oficial de la plataforma de eventos líder en Olavarría.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Atención al Cliente</h4>
+                    <ul>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Envíos y Devoluciones</a></li>
+                        <li><a href="#">Guía de Talles</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Productos</h4>
+                    <ul>
+                        <li><a href="#">Ropa</a></li>
+                        <li><a href="#">Accesorios</a></li>
+                        <li><a href="#">Ediciones Limitadas</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Términos de Venta</a></li>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 OLAEVENTOS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Carrito de Compras</h3>
+                <button class="modal-close" id="closeCartModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="cartItems">
+                <!-- Cart items will be loaded by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <div class="cart-total">
+                    <strong>Total: $<span id="cartTotal">0</span></strong>
+                </div>
+                <button class="btn btn-primary">Proceder al Pago</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>
