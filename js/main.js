@@ -65,7 +65,7 @@ function mostrarEventos (eventos) {
       <h2>${evento.descripcion}</h2>
       <h3>${formatearFecha(evento.fecha)}</h3>
       <p>${evento.lugar}</p>
-      <button>Ver info</button>
+      <a href="./evento-detalle.html">Ver info</a>
     `
 
     eventosContenedor.appendChild(card)
