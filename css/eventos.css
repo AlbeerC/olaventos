@@ -100,7 +100,7 @@
     font-size: 2rem;
 }
 
-#lista-eventos .evento-card button {
+#lista-eventos .evento-card a {
     background-color: var(--color-principal);
     color: #ffffff;
     border: none;
@@ -111,7 +111,7 @@
     font-weight: bold;
 }
 
-#lista-eventos .evento-card button:hover {
+#lista-eventos .evento-card a:hover {
     opacity: 0.8;
 }
 
