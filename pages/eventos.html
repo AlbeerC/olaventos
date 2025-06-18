@@ -4,29 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/eventos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>Eventos</title>
   </head>
   <body>
     <div class="contenido">
-      <header>
-        <a href="../index.html">
-          <img src="../assets/Olaventos-logo.png" alt="Logo de la pagina" />
-        </a>
-        <ul>
-          <li>
-            <a href="../index.html">Inicio</a>
-          </li>
-          <li>
-            <a href="./eventos.html">Eventos</a>
-          </li>
-        </ul>
+        <header>
+            <a href="../index.html" class="imagen-container">
+                <img src="../assets/Olaventos-logo.png" alt="Logo de la pagina">
+            </a>
 
-        <div class="header-buttons">
-          <button class="tema"></button>
+            <!-- BOTÓN HAMBURGUESA -->
+            <button class="menu-hamburguesa" id="menu-hamburguesa">
+                <i class="fa-solid fa-bars"></i>
+            </button>
 
-          <a href="./login.html" class="login">Iniciar Sesion</a>
+            <ul class="menu-nav" id="menu-nav">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./eventos.html">Eventos</a></li>
+            </ul>
+
+            <div class="header-buttons">
+                <button class="tema">
+                </button>
+
+                <a href="./login.html" class="login">Iniciar Sesion</a>
+            </div>
+        </header>
+
+      <main>
+
+        <div class="busqueda-eventos">
+
+          <div class="barra-busqueda">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="search" placeholder="Buscar eventos...">
+          </div>
+
+          <div class="categorias" id="categorias">
+          </div>
         </div>
-      </header>
+
+        <section id="lista-eventos">
+        </section>
+      </main>
+
+      <footer>
+        <p>© Todos los derechos reservados. Olaventos 2025</p>
+        <div class="iconos">
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+      </footer>
     </div>
+
+    <script src="../js/main.js"></script>
   </body>
 </html>
