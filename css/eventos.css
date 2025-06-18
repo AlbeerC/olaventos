@@ -27,6 +27,12 @@
   border-radius: .5rem;
 }
 
+@media (max-width: 768px) {
+    .busqueda-eventos .barra-busqueda {
+        width: 70%;
+    }
+}
+
 /* Categorías */
 .categorias {
     display: flex;
@@ -49,6 +55,7 @@
     width: 12rem;
     cursor: pointer;
     transition: all ease 500ms;
+    border: none;
 }
 
 .categorias .boton-categoria:hover {
@@ -120,4 +127,37 @@
 
 #lista-eventos .evento-card i:hover {
     transform: scale(1.2);
+}
+
+@media (max-width: 1200px) {
+    #lista-eventos {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    #lista-eventos {
+        grid-template-columns: 1fr;
+    }
+
+    .categorias {
+        overflow-x: auto;
+        width: 100%;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; /* para scroll suave en iOS */
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding: 0 1rem;
+    }
+
+    .categorias .boton-categoria {
+        flex: 0 0 auto; /* evita que los botones se ajusten o estiren */
+        width: 10rem;
+        font-size: 1.6rem;
+    }
+
+    #lista-eventos .evento-card {
+        width: 90%;
+    }
 }

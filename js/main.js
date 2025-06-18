@@ -24,7 +24,7 @@ const categoriasContenedor = document.getElementById("categorias")
 if (categoriasContenedor) {
   categorias.forEach(cat => {
 
-    const botonCategoria = document.createElement("div")
+    const botonCategoria = document.createElement("button")
     botonCategoria.classList.add("boton-categoria")
     botonCategoria.innerHTML = `
       <p class="icono">${cat.icono}</p>
@@ -36,8 +36,7 @@ if (categoriasContenedor) {
 }
 
 
-// Mostrar contenido del JSON
-
+// Traer el contenido del JSON
 async function cargarEventos () {
   try {
     const respuesta = await fetch("../eventos.json")
@@ -47,14 +46,14 @@ async function cargarEventos () {
     }
 
     const eventos = await respuesta.json()
-    mostrarDatos(eventos)
+    mostrarEventos(eventos)
   } catch (error) {
     console.error('Ocurrió un error al obtener los datos:', error.message);
   }
 }
 
-
-function mostrarDatos (eventos) {
+// Mostrar el contenido del JSON
+function mostrarEventos (eventos) {
   const eventosContenedor = document.getElementById("lista-eventos")
 
   eventos.forEach(evento => {
@@ -64,8 +63,8 @@ function mostrarDatos (eventos) {
     card.innerHTML = `
       <i class="fa-solid fa-heart"></i>
       <h2>${evento.descripcion}</h2>
-      <h3>05 AGO, 2025</h3>
-      <p>Teatro municipal</p>
+      <h3>${formatearFecha(evento.fecha)}</h3>
+      <p>${evento.lugar}</p>
       <button>Ver info</button>
     `
 
@@ -74,3 +73,14 @@ function mostrarDatos (eventos) {
 }
 
 cargarEventos()
+
+// Formatear fecha para el html
+function formatearFecha(fechaISO) {
+  const fecha = new Date(fechaISO)
+  const dia = fecha.getDate().toString().padStart(2, '0')
+  const año = fecha.getFullYear()
+  const meses = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC']
+  const mes = meses[fecha.getMonth()]
+  return `${dia} ${mes}, ${año}`
+}
+
