@@ -24,11 +24,20 @@ main {
   margin: 0 auto;
 }
 
-h1, h2, h3, h4, p, a, li, span {
+h1,
+h2,
+h3,
+h4,
+p,
+a,
+li,
+span {
   font-family: "Source Sans 3", sans-serif;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: bold;
 }
 
@@ -47,55 +56,55 @@ a {
 
 /* Estilos header */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 5rem;
-    border-bottom: solid 1px #e1e1e1;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 5rem;
+  border-bottom: solid 1px #e1e1e1;
+  flex-wrap: wrap;
 }
 
 header img {
-    width: 15rem;
-    height: auto;
+  width: 15rem;
+  height: auto;
 }
 
 header ul {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }
 
 header ul li a {
-    color: #000000;
-    font-weight: bold;
-    font-size: 2.3rem;
-    text-transform: uppercase;
+  color: #000000;
+  font-weight: bold;
+  font-size: 2.3rem;
+  text-transform: uppercase;
 }
 
 header ul li a:hover {
-    color: var(--color-principal);
+  color: var(--color-principal);
 }
 
 .header-buttons {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
 }
 
 .header-buttons .login {
-    background-color: var(--color-principal);
-    color: #ffffff;
-    border-radius: 1rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 1rem 2rem;
+  background-color: var(--color-principal);
+  color: #ffffff;
+  border-radius: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 1rem 2rem;
 }
 
 
 .header-buttons .login:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 /* Menú hamburguesa */
@@ -136,7 +145,7 @@ header ul li a:hover {
   .menu-nav.activo {
     display: flex;
   }
-  
+
   header .imagen-container {
     order: 2;
     padding-top: .5rem;

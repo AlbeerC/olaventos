@@ -1,0 +1,66 @@
+h2 {
+    text-align: center;
+    margin: 3rem 0;
+    font-size: 3rem;
+}
+
+.detalle-contenedor {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5rem;
+    gap: 5rem;
+}
+
+.izquierda, .derecha {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.izquierda p:last-child {
+    font-size: 1.8rem;
+    font-weight: normal;
+    border: none;
+}
+
+.izquierda p span {
+    color: var(--color-principal);
+}
+
+.izquierda p {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 2rem;
+}
+
+.derecha p {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 2rem;
+    font-size: 2.25rem;
+}
+
+.derecha img {
+    max-width: 100%;
+}
+
+.derecha .mapa p {
+    border: none;
+}
+
+.derecha span {
+    color: var(--color-principal);
+}
+
+@media (max-width: 768px) {
+    .detalle-contenedor {
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+    }
+    .izquierda, .derecha {
+        width: 100%;
+    }
+}

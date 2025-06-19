@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registrar Evento</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/crearEventos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+</head>
+
+<body>
+    <div class="contenido">
+        <header>
+            <a href="../index.html" class="imagen-container">
+                <img src="../assets/Olaventos-logo.png" alt="Logo de la pagina" />
+            </a>
+
+            <button class="menu-hamburguesa" id="menu-hamburguesa">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <ul class="menu-nav" id="menu-nav">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="./eventos.html">Eventos</a></li>
+            </ul>
+
+            <div class="header-buttons">
+                <button class="tema"></button>
+                <a href="./login.html" class="login">Iniciar Sesion</a>
+            </div>
+        </header>
+
+        <main>
+            <section class="formulario-evento">
+                <p class="text">Completá el formulario para registrar un nuevo evento</p>
+
+                <form id="registroEventoForm">
+                    <div class="campo">
+                        <label for="titulo">Título del Evento</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ej: Festival Aplauso al asador "
+                            required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion"
+                            placeholder="Incluya una breve descripción del evento" rows="4" required></textarea>
+                    </div>
+
+                    <div class="campo">
+                        <label for="fecha">Fecha</label>
+                        <input type="date" id="fecha" name="fecha" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="hora">Hora</label>
+                        <input type="time" id="hora" name="hora" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="categoria">Categoría</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">-- Seleccioná una opción --</option>
+                            <option value="cultural">Cultural</option>
+                            <option value="musical">Musical</option>
+                            <option value="deportivo">Deportivo</option>
+                            <option value="otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="lugar">Lugar</label>
+                        <input type="text" id="lugar" name="lugar" placeholder="Lugar del evento" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" id="direccion" name="direccion" placeholder="Dirección del lugar" required />
+                    </div>
+
+                    <div class="campo">
+                        <label for="imagen">Imagen del Evento</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*" />
+                    </div>
+
+                    <button type="submit">Registrar Evento</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>© Todos los derechos reservados. Olaventos 2025</p>
+            <div class="iconos">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-whatsapp"></i>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        const form = document.getElementById("registroEventoForm");
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const evento = Object.fromEntries(data.entries());
+            console.log("Evento registrado:", evento);
+            alert("¡Evento registrado con éxito!");
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>
