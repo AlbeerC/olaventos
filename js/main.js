@@ -67,8 +67,9 @@ function mostrarEventos (eventos) {
       <p>${evento.lugar}</p>
       <a href="./evento-detalle.html">Ver info</a>
     `
-
-    eventosContenedor.appendChild(card)
+    if (eventosContenedor) {
+      eventosContenedor.appendChild(card)
+    }
   })
 }
 
