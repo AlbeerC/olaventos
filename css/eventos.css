@@ -94,6 +94,7 @@
 
 #lista-eventos .evento-card h3 {
     font-size: 2.5rem;
+    color: var(--color-principal);
 }
 
 #lista-eventos .evento-card p {
@@ -127,6 +128,11 @@
 
 #lista-eventos .evento-card i:hover {
     transform: scale(1.2);
+}
+
+#lista-eventos .evento-card img {
+    width: 90%;
+    height: 15rem;
 }
 
 @media (max-width: 1200px) {
