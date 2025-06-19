@@ -4,7 +4,7 @@ h2 {
     font-size: 3rem;
 }
 
-.detalle-contenedor {
+.detalle-flex {
     display: flex;
     justify-content: space-between;
     padding: 2rem 5rem;
@@ -21,7 +21,7 @@ h2 {
     font-weight: 700;
 }
 
-.izquierda p:last-child {
+.izquierda .descripcion {
     font-size: 1.8rem;
     font-weight: normal;
     border: none;
@@ -34,6 +34,10 @@ h2 {
 .izquierda p {
     border-bottom: 1px solid #e1e1e1;
     padding-bottom: 2rem;
+}
+
+.izquierda img {
+    width: 100%;
 }
 
 .derecha p {
@@ -55,7 +59,7 @@ h2 {
 }
 
 @media (max-width: 768px) {
-    .detalle-contenedor {
+    .detalle-flex {
         flex-direction: column;
         justify-content: center;
         padding: 2rem;
