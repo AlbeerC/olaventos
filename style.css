@@ -130,6 +130,7 @@ header ul li a:hover {
     padding-top: 2rem;
     order: 4;
     align-items: flex-start;
+    width: 100%;
   }
 
   .menu-nav.activo {
