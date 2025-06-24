@@ -99,23 +99,54 @@ main .eventos-destacados h2 {
 }
 
 main .organizador {
-    background-color: #d9d9d995;
-    color: #000000;
-    padding: 1rem 2rem;
+    background: linear-gradient(to right, #2563eb, #4f46e5, #9333ea);
+    height: 30rem;
+    color: #ffffff;
     margin: 5rem auto;
-    max-width: 40%;
-    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-size: 2rem;
+    text-align: center;
 }
+
+main .organizador h3 {
+    font-size: 3rem;
+}
+
+main .organizador p {
+    max-width: 60%;
+}
+
 
 main .organizador a {
     color: var(--color-principal);
+    background-color: #ffffff;
     font-weight: bold;
-    margin-left: 1rem;
     font-size: 1.8rem;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 @media (max-width: 1200px) {
+
     main .organizador {
-        max-width: 90%;
+        padding: 1rem;
+        height: auto;
+        gap: 2rem;
+    }
+
+    main .organizador h3 {
+        font-size: 2rem;
+    }
+
+    main .organizador p {
+        max-width: 100%;
+        font-size: 1.6rem;
     }
 }
