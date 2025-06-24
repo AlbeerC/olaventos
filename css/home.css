@@ -74,6 +74,11 @@ main .eventos-destacados {
     gap: 1.5rem;
 }
 
+main #mapa {
+    height: 50rem;
+    width: 80%;
+}
+
 main .eventos-destacados h2 {
     font-size: 3rem;
 }
@@ -85,6 +90,11 @@ main .eventos-destacados h2 {
 
     main .main-text p {
         max-width: 90%;
+    }
+
+    main #mapa {
+        height: 30rem;
+        width: 90%;
     }
 }
 

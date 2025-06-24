@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Olaventos | Evento Detalle</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olaventos | Panel de creador</title>
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/evento-detalle.css">
+    <link rel="stylesheet" href="../css/panel-creador.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  </head>
-  <body>
-
+</head>
+<body>
+    
     <header>
       <a href="../index.html" class="imagen-container">
         <img src="../assets/Olaventos-logo.png" alt="Logo de la pagina" />
@@ -31,15 +28,18 @@
       <div class="header-buttons">
         <button class="tema"></button>
 
-        <a href="./login.html" class="login">Iniciar Sesion</a>
+        <a href="./panel-creador.html" class="login">Panel de creador</a>
       </div>
     </header>
 
     <main>
+        <section class="titulos">
+            <h2>Mis eventos</h2>
+            <a href="./crearEvento.html"><button><i class="fa-solid fa-plus"></i> Nuevo evento</button></a>
+        </section>
 
-      <section class="detalle-contenedor" id="detalle-evento-contenedor">
-      </section>
-    
+        <section id="eventosCreador">
+        </section>
     </main>
 
     <footer>
@@ -52,5 +52,5 @@
     </footer>
 
     <script src="../js/main.js"></script>
-  </body>
+</body>
 </html>
