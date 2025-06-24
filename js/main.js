@@ -45,6 +45,7 @@ async function cargarEventos() {
     const eventos = await respuesta.json();
     mostrarEventos(eventos);
     mostrarDetalleEvento(eventos[0])
+    mostrarEventosCreador(eventos);
   } catch (error) {
     console.error("Ocurrió un error al obtener los datos:", error.message);
   }
@@ -110,32 +111,23 @@ function mostrarDetalleEvento(evento) {
     detalleContenedor.appendChild(detalleVista)
   }
 
-  cargarMapaDetalleEvento();
+  if (!typeof L === "undefined") {
+    cargarMapaDetalleEvento();
+  }
 }
 
 cargarEventos();
 
 // Formatear fecha para el html
 function formatearFecha(fechaISO) {
-  const fecha = new Date(fechaISO);
-  const dia = fecha.getDate().toString().padStart(2, "0");
-  const año = fecha.getFullYear();
+  const [año, mes, dia] = fechaISO.split("-");
+  const fecha = new Date(año, mes - 1, dia);
+
   const meses = [
-    "ENE",
-    "FEB",
-    "MAR",
-    "ABR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AGO",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DIC",
+    "ENE", "FEB", "MAR", "ABR", "MAY", "JUN",
+    "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"
   ];
-  const mes = meses[fecha.getMonth()];
-  return `${dia} ${mes}, ${año}`;
+  return `${dia} ${meses[fecha.getMonth()]}, ${año}`;
 }
 
 
@@ -168,7 +160,10 @@ function cargarMapaInicio () {
     .bindPopup("<b>Feria Gastronómica</b><br>'Sabores del Mundo'")
 }
 
-cargarMapaInicio();
+if (!typeof L === "undefined") {
+  cargarMapaInicio();
+}
+
 
 // Usar mapa en el evento del detalle
 function cargarMapaDetalleEvento () {
@@ -180,4 +175,34 @@ function cargarMapaDetalleEvento () {
 
   L.marker([-36.894050374496665, -60.32247491054502]).addTo(mapaEvento)
   .bindTooltip("Teatro municipal", {direction: "top"})
+}
+
+
+// Generar eventos del creador
+function mostrarEventosCreador(eventos) {
+  const eventosCreador = document.getElementById("eventosCreador");
+
+  const primerosEventos = eventos.slice(0, 3);
+
+  primerosEventos.forEach ((evento) => {
+    const eventoDiv = document.createElement("div");
+    eventoDiv.classList.add("evento");
+    eventoDiv.innerHTML = `
+      <div class="arriba">
+        <h3>${evento.titulo}</h3>
+        <span>Publicado</span>
+      </div>
+      <img src="${evento.imagen}" alt="${evento.titulo}">
+      <p class="fecha">${formatearFecha(evento.fecha)}</p>
+      <p>${evento.lugar} - ${evento.dirección}</p>
+      <div class="botones">
+        <button>Editar</button>
+        <button>Eliminar</button>
+      </div>
+    `;
+
+    if (eventosCreador) {
+      eventosCreador.appendChild(eventoDiv);
+    }
+  })
 }

@@ -182,6 +182,11 @@ footer .iconos {
 footer .iconos i {
   font-size: 3rem;
   cursor: pointer;
+  transition: all ease 500ms;
+}
+
+footer .iconos i:hover {
+  transform: scale(1.2);
 }
 
 @media (max-width: 768px) {
