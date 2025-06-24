@@ -100,7 +100,7 @@ function mostrarDetalleEvento(evento) {
               <p>🎫 Entradas desde $${evento.precioDeEntradas} en: <span>articket.com/grupotech</span></p>
               <div class="mapa">
                 <p>📍 ${evento.lugar} (${evento.dirección})</p>
-                <img src="../assets/mapa.webp" alt="Mapa del evento">
+                <div id="mapaEvento"></div>
               </div>
             </div>
           </div> 
@@ -109,6 +109,8 @@ function mostrarDetalleEvento(evento) {
   if (detalleContenedor) {
     detalleContenedor.appendChild(detalleVista)
   }
+
+  cargarMapaDetalleEvento();
 }
 
 cargarEventos();
@@ -134,4 +136,48 @@ function formatearFecha(fechaISO) {
   ];
   const mes = meses[fecha.getMonth()];
   return `${dia} ${mes}, ${año}`;
+}
+
+
+// Usar mapa de la librería leaflet
+function cargarMapaInicio () {
+  const mapa = L.map('mapa').setView([-36.8925, -60.3228], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mapa);
+
+  L.marker([-36.894050374496665, -60.32247491054502]).addTo(mapa)
+    .bindTooltip("Concierto", { direction: "bottom" })
+    .bindPopup("<b>Master Stroke</b><br>Tributo a Queen")
+
+  L.marker([-36.88946876597194, -60.32544841518231]).addTo(mapa)
+    .bindTooltip("Taller", { direction: "bottom" })
+    .bindPopup("<b>Taller de Arte, Música y Manualidades</b><br>para Niños")
+
+  L.marker([-36.895524416740365, -60.33379363782468]).addTo(mapa)
+    .bindTooltip("Torneo", { direction: "bottom" })
+    .bindPopup("<b>Torneo Nacional de Selecciones de Básquet</b><br>2025")
+
+  L.marker([-36.88272894572409, -60.319987834541315]).addTo(mapa)
+    .bindTooltip("Obra teatral", { direction: "bottom" })
+    .bindPopup("<b>Tertulia Familiar</b><br>Teatro Independiente")
+
+  L.marker([-36.891080912915, -60.325664966963394]).addTo(mapa)
+    .bindTooltip("Feria", { direction: "bottom" })
+    .bindPopup("<b>Feria Gastronómica</b><br>'Sabores del Mundo'")
+}
+
+cargarMapaInicio();
+
+// Usar mapa en el evento del detalle
+function cargarMapaDetalleEvento () {
+  const mapaEvento = L.map('mapaEvento').setView([-36.8925, -60.3228], 14);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(mapaEvento);
+
+  L.marker([-36.894050374496665, -60.32247491054502]).addTo(mapaEvento)
+  .bindTooltip("Teatro municipal", {direction: "top"})
 }

@@ -46,6 +46,11 @@ h2 {
     font-size: 2.25rem;
 }
 
+.derecha #mapaEvento {
+    height: 40rem;
+    width: 100%;
+}
+
 .derecha img {
     max-width: 100%;
 }
@@ -66,5 +71,9 @@ h2 {
     }
     .izquierda, .derecha {
         width: 100%;
+    }
+
+    .derecha #mapaEvento {
+        height: 30rem;
     }
 }
