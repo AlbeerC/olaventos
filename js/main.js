@@ -111,7 +111,7 @@ function mostrarDetalleEvento(evento) {
     detalleContenedor.appendChild(detalleVista)
   }
 
-  if (!typeof L === "undefined") {
+  if (typeof L !== "undefined") {
     cargarMapaDetalleEvento();
   }
 }
@@ -160,9 +160,10 @@ function cargarMapaInicio () {
     .bindPopup("<b>Feria Gastronómica</b><br>'Sabores del Mundo'")
 }
 
-if (!typeof L === "undefined") {
+
+if (typeof L !== "undefined") {
   cargarMapaInicio();
-}
+} 
 
 
 // Usar mapa en el evento del detalle
