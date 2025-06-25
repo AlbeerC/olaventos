@@ -1,3 +1,8 @@
+.eventos-main {
+    max-width: 140rem;
+    margin: 0 auto;
+}
+
 .busqueda-eventos {
     display: flex;
     flex-direction: column;
