@@ -132,7 +132,7 @@ function formatearFecha(fechaISO) {
 
 
 // Usar mapa de la librería leaflet
-function cargarMapaInicio () {
+function cargarMapaInicio() {
   const mapa = L.map('mapa').setView([-36.8925, -60.3228], 14);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -163,11 +163,11 @@ function cargarMapaInicio () {
 
 if (typeof L !== "undefined") {
   cargarMapaInicio();
-} 
+}
 
 
 // Usar mapa en el evento del detalle
-function cargarMapaDetalleEvento () {
+function cargarMapaDetalleEvento() {
   const mapaEvento = L.map('mapaEvento').setView([-36.8925, -60.3228], 14);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -175,7 +175,7 @@ function cargarMapaDetalleEvento () {
   }).addTo(mapaEvento);
 
   L.marker([-36.894050374496665, -60.32247491054502]).addTo(mapaEvento)
-  .bindTooltip("Teatro municipal", {direction: "top"})
+    .bindTooltip("Teatro municipal", { direction: "top" })
 }
 
 
@@ -185,7 +185,7 @@ function mostrarEventosCreador(eventos) {
 
   const primerosEventos = eventos.slice(0, 3);
 
-  primerosEventos.forEach ((evento) => {
+  primerosEventos.forEach((evento) => {
     const eventoDiv = document.createElement("div");
     eventoDiv.classList.add("evento");
     eventoDiv.innerHTML = `
@@ -197,7 +197,7 @@ function mostrarEventosCreador(eventos) {
       <p class="fecha">${formatearFecha(evento.fecha)}</p>
       <p>${evento.lugar} - ${evento.dirección}</p>
       <div class="botones">
-        <button>Editar</button>
+        <button onclick="window.location.href='./crearEvento.html'">Editar</button>
         <button class="eliminar-btn">Eliminar</button>
       </div>
     `;
@@ -206,7 +206,7 @@ function mostrarEventosCreador(eventos) {
       eventosCreador.appendChild(eventoDiv);
     }
   })
-  eliminarEvento()
+  eliminarEvento();
 }
 // Simulación de borrar un evento
 function eliminarEvento() {
