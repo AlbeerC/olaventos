@@ -206,4 +206,18 @@ function mostrarEventosCreador(eventos) {
       eventosCreador.appendChild(eventoDiv);
     }
   })
+  eliminarEvento()
+}
+// Simulación de borrar un evento
+function eliminarEvento() {
+  const botonesEliminar = document.querySelectorAll(".eliminar-btn");
+
+  botonesEliminar.forEach((boton) => {
+    boton.addEventListener("click", (e) => {
+      if (confirm("¿Estás seguro de que querés eliminar este evento?")) {
+        const card = e.target.closest(".evento");
+        card.remove();
+      }
+    });
+  });
 }
