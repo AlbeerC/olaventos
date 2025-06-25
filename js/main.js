@@ -198,7 +198,7 @@ function mostrarEventosCreador(eventos) {
       <p>${evento.lugar} - ${evento.dirección}</p>
       <div class="botones">
         <button>Editar</button>
-        <button>Eliminar</button>
+        <button class="eliminar-btn">Eliminar</button>
       </div>
     `;
 
