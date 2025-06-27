@@ -95,6 +95,11 @@
     position: relative;
     width: 35rem;
     text-align: center;
+    transition: ease all 1000ms;
+}
+
+#lista-eventos .evento-card:hover {
+    transform: scale(1.05);
 }
 
 #lista-eventos .evento-card h3 {

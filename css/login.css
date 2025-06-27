@@ -1,7 +1,14 @@
 .text {
     font-size: 2rem;
-    margin: 5rem 0;
     text-align: center;
+    padding-bottom: 2rem;
+}
+
+.main-login {
+  background-image: url("../assets/dorel-gnatiuc-sLEO6BoRZF8-unsplash.webp");
+  background-position: center;
+  background-size: cover;
+  padding: 5rem 0;
 }
 
 .login-form {
@@ -53,4 +60,14 @@
 
 .login-form button:hover {
   background-color: #0052c3;
+}
+
+.login-form .iniciar-sesion-link {
+    padding-top: 2rem;
+    font-size: 2rem;
+}
+
+.login-form .iniciar-sesion-link a {
+    color: var(--color-principal);
+    text-decoration: none;
 }

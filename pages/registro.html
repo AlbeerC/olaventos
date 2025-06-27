@@ -44,8 +44,18 @@
 
 
         <form class="login-form">
-          <p class="text">Inicia sesión para guardar tus eventos favoritos</p>
+          <p class="text">Registrate para enterarte de los últimos eventos</p>
 
+          <div class="campo">
+            <label for="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Nombre"
+              required
+            />
+          </div>
           <div class="campo">
             <label for="email">Email</label>
             <input
@@ -66,9 +76,19 @@
               required
             />
           </div>
+          <div class="campo">
+            <label for="password">Confirmar contraseña</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              placeholder="******"
+              required
+            />
+          </div>
 
           <button type="submit">Ingresar</button>
-          <p class="iniciar-sesion-link">No tenes cuenta? <a href="./registro.html">Registrarse</a></p>
+          <p class="iniciar-sesion-link">Ya tenes cuenta? <a href="./login.html">Iniciá sesión</a></p>
         </form>
       </main>
 
