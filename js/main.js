@@ -206,8 +206,11 @@ function mostrarEventosCreador(eventos) {
       eventosCreador.appendChild(eventoDiv);
     }
   })
+
   eliminarEvento();
 }
+
+
 // Simulación de borrar un evento
 function eliminarEvento() {
   const botonesEliminar = document.querySelectorAll(".eliminar-btn");
@@ -220,4 +223,22 @@ function eliminarEvento() {
       }
     });
   });
+}
+
+
+// Formulario de organizador lleva al panel si se completan los campos
+const formularioOrganizador = document.getElementById("form-organizador");
+
+if (formularioOrganizador) {
+formularioOrganizador.addEventListener("submit", function (e) {
+  e.preventDefault(); // evita el envío tradicional
+
+  if (formularioOrganizador.checkValidity()) {
+    // Si los campos required están bien
+    window.location.href = "../pages/panel-creador.html"; // Redirige al panel
+  } else {
+    // Si algo falta, el navegador mostrará el mensaje de validación automáticamente
+    formularioOrganizador.reportValidity(); // fuerza mostrar errores si hay
+  }
+});
 }
