@@ -86,7 +86,7 @@
 
                     <div class="campo">
                         <label for="imagen">Imagen del Evento</label>
-                        <input type="file" id="imagen" name="imagen" accept="image/*" />
+                        <input type="text" id="imagen" name="imagen" placeholder="Enlace de la imagen" required />
                     </div>
 
                     <button type="submit">Registrar Evento</button>
@@ -109,17 +109,6 @@
     </div>
 
     <script src="../js/main.js"></script>
-    <script>
-        const form = document.getElementById("registroEventoForm");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            const data = new FormData(form);
-            const evento = Object.fromEntries(data.entries());
-            console.log("Evento registrado:", evento);
-            alert("¡Evento registrado con éxito!");
-            form.reset();
-        });
-    </script>
 </body>
 
 </html>

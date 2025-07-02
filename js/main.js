@@ -140,23 +140,18 @@ function cargarMapaInicio() {
   }).addTo(mapa);
 
   L.marker([-36.894050374496665, -60.32247491054502]).addTo(mapa)
-    .bindTooltip("Concierto", { direction: "bottom" })
     .bindPopup("<b>Master Stroke</b><br>Tributo a Queen")
 
   L.marker([-36.88946876597194, -60.32544841518231]).addTo(mapa)
-    .bindTooltip("Taller", { direction: "bottom" })
     .bindPopup("<b>Taller de Arte, Música y Manualidades</b><br>para Niños")
 
   L.marker([-36.895524416740365, -60.33379363782468]).addTo(mapa)
-    .bindTooltip("Torneo", { direction: "bottom" })
     .bindPopup("<b>Torneo Nacional de Selecciones de Básquet</b><br>2025")
 
   L.marker([-36.88272894572409, -60.319987834541315]).addTo(mapa)
-    .bindTooltip("Obra teatral", { direction: "bottom" })
     .bindPopup("<b>Tertulia Familiar</b><br>Teatro Independiente")
 
   L.marker([-36.891080912915, -60.325664966963394]).addTo(mapa)
-    .bindTooltip("Feria", { direction: "bottom" })
     .bindPopup("<b>Feria Gastronómica</b><br>'Sabores del Mundo'")
 }
 
@@ -206,24 +201,18 @@ function mostrarEventosCreador(eventos) {
       eventosCreador.appendChild(eventoDiv);
     }
   })
-
-  eliminarEvento();
 }
 
 
 // Simulación de borrar un evento
-function eliminarEvento() {
-  const botonesEliminar = document.querySelectorAll(".eliminar-btn");
-
-  botonesEliminar.forEach((boton) => {
-    boton.addEventListener("click", (e) => {
-      if (confirm("¿Estás seguro de que querés eliminar este evento?")) {
-        const card = e.target.closest(".evento");
-        card.remove();
-      }
-    });
-  });
-}
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("eliminar-btn")) {
+    const card = e.target.closest(".evento")
+    if (confirm("¿Estás seguro de que querés eliminar este evento?")) {
+      card.remove()
+    }
+  }
+})
 
 
 // Formulario de organizador lleva al panel si se completan los campos
@@ -241,4 +230,55 @@ formularioOrganizador.addEventListener("submit", function (e) {
     formularioOrganizador.reportValidity(); // fuerza mostrar errores si hay
   }
 });
+}
+
+
+// Simular la carga de un evento al JSON
+function crearEvento() {
+  const eventosSimulados = [] // lista en memoria
+
+  const form = document.getElementById("registroEventoForm")
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault()
+
+  const nuevoEvento = {
+    titulo: document.getElementById("titulo").value,
+    descripcion: document.getElementById("descripcion").value,
+    fecha: document.getElementById("fecha").value,
+    hora: document.getElementById("hora").value,
+    categoria: document.getElementById("categoria").value,
+    lugar: document.getElementById("lugar").value,
+    dirección: document.getElementById("direccion").value,
+    imagen: document.getElementById("imagen").value || "../assets/placeholder.png",
+    precioDeEntradas: 0,
+    organizador: "Usuario actual"
+  }
+
+  eventosSimulados.push(nuevoEvento)
+  alert("✅ Evento creado correctamente (simulado)")
+
+  // Guardarlo en sessionStorage para pasar el dato al panel
+  sessionStorage.setItem("eventoNuevo", JSON.stringify(nuevoEvento))
+
+  // Redirigir al panel
+  window.location.href = "../pages/panel-creador.html"
+})
+}
+
+if (document.getElementById("registroEventoForm")) {
+  crearEvento()
+}
+
+
+// Ver el vento creado desde el panel
+if (document.getElementById("eventosCreador")) {
+  window.addEventListener("DOMContentLoaded", () => {
+    const eventoNuevo = JSON.parse(sessionStorage.getItem("eventoNuevo"))
+
+    if (eventoNuevo) {
+      mostrarEventosCreador([eventoNuevo])
+      sessionStorage.removeItem("eventoNuevo")
+    }
+  })
 }
