@@ -1,23 +1,25 @@
-.text {
-    font-size: 2rem;
-    text-align: center;
-    padding-bottom: 2rem;
-}
-
 .main-login {
-  background-image: url("../assets/dorel-gnatiuc-sLEO6BoRZF8-unsplash.webp");
-  background-position: center;
-  background-size: cover;
   padding: 5rem 0;
 }
 
 .login-form {
   background-color: #F5F5F5;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 1rem;
   max-width: 50rem;
   margin: 5rem auto;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+  padding-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.text {
+  font-size: 1.7rem;
+  padding-bottom: 2rem;
+  color: #727272;
 }
 
 .login-form .campo {
@@ -34,7 +36,7 @@
 }
 
 .login-form .campo input {
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   font-size: 1.5rem;
@@ -64,7 +66,8 @@
 
 .login-form .iniciar-sesion-link {
     padding-top: 2rem;
-    font-size: 2rem;
+    font-size: 1.7rem;
+    color: #727272;
 }
 
 .login-form .iniciar-sesion-link a {
