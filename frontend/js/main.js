@@ -10,6 +10,7 @@ if (botonMenu && menu) {
 
 // Generar botones de categoría dinámicamente
 const categorias = [
+  { nombre: "Todos", icono: "⭐"},
   { nombre: "Culturales", icono: "🎭" },
   { nombre: "Deportes", icono: "⚽" },
   { nombre: "Educativos", icono: "🎓" },

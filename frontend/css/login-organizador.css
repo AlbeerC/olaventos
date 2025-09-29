@@ -1,7 +1,4 @@
 .main-login-organizador {
-    background-image: url("../assets/dorel-gnatiuc-sLEO6BoRZF8-unsplash.webp");
-    background-position: center;
-    background-size: cover;
     padding: 5rem 0;
 }
 
@@ -14,10 +11,17 @@
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
 }
 
-.main-login-organizador .form-organizador p {
-    font-size: 1.8rem;
-    padding-bottom: 2rem;
+.main-login-organizador h2 {
+  padding-bottom: 1rem;
+  font-size: 3rem;
 }
+
+.main-login-organizador p {
+  font-size: 1.7rem;
+  padding-bottom: 2rem;
+  color: #727272;
+}
+
 
 .main-login-organizador .form-organizador .campo {
     margin-bottom: 1.5rem;
