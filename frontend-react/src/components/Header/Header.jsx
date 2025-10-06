@@ -13,7 +13,7 @@ function Header () {
 
     return (
       <header>
-        <a href="index.html" className="imagen-container">
+        <a href="" className="imagen-container">
           <img src={logo} alt="Logo de la pagina" />
         </a>
 
@@ -22,14 +22,14 @@ function Header () {
         </button>
 
         <ul className={`menu-nav ${menuAbierto ? 'activo' : ''}`}>
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="./pages/eventos.html">Eventos</a></li>
+          <li><a href="">Inicio</a></li>
+          <li><a href="">Eventos</a></li>
         </ul>
 
         <div className="header-buttons">
           <button className="tema"></button>
 
-          <a href="./pages/login.html" className="login">Iniciar Sesion</a>
+          <a href="" className="login">Iniciar Sesion</a>
         </div>
       </header>
     )
