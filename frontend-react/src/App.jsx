@@ -2,6 +2,7 @@ import './App.css'
 import Header from './components/Header/Header'
 import Inicio from './components/Inicio/Inicio'
 import Footer from './components/Footer/Footer'
+import Login from './components/Login/Login'
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
     <>
       <Header />
       <Inicio />
+      <Login />
       <Footer />
     </>
   )

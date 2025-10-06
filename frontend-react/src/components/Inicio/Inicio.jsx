@@ -9,7 +9,7 @@ function Inicio() {
       <section className="hero">
         <div className="hero-text">
           <h2>Descubrí lo mejor de Olavarría, en un solo lugar</h2>
-          <a href="./pages/eventos.html">Ver eventos</a>
+          <a href="">Ver eventos</a>
         </div>
       </section>
 
@@ -47,7 +47,7 @@ function Inicio() {
           Registrá tu evento y llegá a miles de personas en Olavarría. Es fácil,
           rápido y completamente gratuito.
         </p>
-        <a href="./pages/registro-organizador.html">
+        <a href="">
           Crear evento gratis <MoveRight />
         </a>
       </div>
