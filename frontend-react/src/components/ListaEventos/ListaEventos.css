@@ -31,10 +31,10 @@
   width: 50%;
 }
 
-.busqueda-eventos .barra-busqueda i {
+.busqueda-eventos .barra-busqueda svg {
   position: absolute;
   top: 50%;
-  left: 10px;
+  left: 5px;
   transform: translateY(-50%);
   color: #888;
 }
@@ -143,17 +143,18 @@
     opacity: 0.8;
 }
 
-.lista-eventos .evento-card i {
+.lista-eventos .evento-card svg {
     color: #ff0000;
-    font-size: 4rem;
+    width: 5rem;
+    height: 5rem;
     position: absolute;
-    top: -1.5rem;
-    right: -1.5rem;
+    top: -1.8rem;
+    right: -1.8rem;
     transition: transform 0.5s ease;
     cursor: pointer;
 }
 
-.lista-eventos .evento-card i:hover {
+.lista-eventos .evento-card svg:hover {
     transform: scale(1.2);
 }
 

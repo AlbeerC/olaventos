@@ -5,6 +5,17 @@ import CartaEvento from "../CartaEvento/CartaEvento";
 
 function ListaEventos() {
   const [eventos, setEventos] = useState([]);
+
+  const categorias = [
+    { nombre: "Todos", icono: "⭐" },
+    { nombre: "Culturales", icono: "🎭" },
+    { nombre: "Deportes", icono: "⚽" },
+    { nombre: "Educativos", icono: "🎓" },
+    { nombre: "Ferias", icono: "🛍️" },
+    { nombre: "Fiestas", icono: "🥳️" },
+    { nombre: "Otros", icono: "📚" },
+  ];
+
   useEffect(() => {
     const cargarEventos = async () => {
       try {
@@ -36,13 +47,21 @@ function ListaEventos() {
           <input type="search" placeholder="Buscar eventos..." />
         </div>
 
-        <div className="categorias" id="categorias"></div>
-      </div>
-        <div className="lista-eventos">
-            {eventos.map((evento) => (
-            <CartaEvento evento={evento} key={evento.titulo}/>
-        ))}
+        <div className="categorias">
+          {categorias.map((cat) => (
+            <button className="boton-categoria">
+              <p class="icono">{cat.icono}</p>
+              <p>{cat.nombre}</p>
+            </button>
+          ))}
         </div>
+
+      </div>
+      <div className="lista-eventos">
+        {eventos.map((evento) => (
+          <CartaEvento evento={evento} key={evento.titulo} />
+        ))}
+      </div>
     </main>
   );
 }
