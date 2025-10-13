@@ -1,0 +1,158 @@
+.panel-creador-main {
+  max-width: 140rem;
+  margin: 0 auto;
+}
+
+/* Sección título */
+.panel-creador-main .titulos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4rem 5rem 2rem;
+}
+
+.panel-creador-main .titulos h2 {
+  font-size: 3rem;
+}
+
+.panel-creador-main .titulos button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--color-principal);
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.panel-creador-main .titulos button:hover {
+  opacity: 0.85;
+}
+
+/* Contenedor de eventos */
+.eventos-creador {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0 5rem 4rem;
+  margin-top: 5rem;
+}
+
+/* Card de evento */
+.eventos-creador .evento {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.eventos-creador .evento img {
+  width: 12rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+
+.eventos-creador .evento > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.evento .arriba,
+.evento p,
+.evento .botones {
+  width: 100%;
+}
+
+.evento .arriba h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.evento .arriba span {
+  color: #888;
+  font-size: 1.4rem;
+}
+
+.evento p {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.evento .fecha {
+    text-align: center;
+}
+
+/* Botones editar y eliminar */
+.botones {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 15rem;
+}
+
+.botones button {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.botones button:first-child {
+  background-color: var(--color-principal);
+  color: white;
+}
+
+.botones button:last-child {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.botones button:hover {
+  opacity: 0.85;
+}
+
+
+@media (max-width: 768px) {
+  .evento {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .evento img {
+    width: 100%;
+    height: auto;
+  }
+
+  .botones {
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .titulos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 2rem;
+  }
+
+  .eventos-creador {
+    padding: 0 2rem 4rem;
+  }
+}
