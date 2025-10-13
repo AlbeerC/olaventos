@@ -5,6 +5,8 @@ import Footer from './components/Footer/Footer'
 import Login from './components/Login/Login'
 import CrearEventos from './components/CrearEventos/CrearEventos'
 import ListaEventos from './components/ListaEventos/ListaEventos'
+import DetalleEvento from './components/DetalleEvento/DetalleEvento'
+import PanelCreador from './components/PanelCreador/PanelCreador'
 
 function App() {
 
@@ -15,6 +17,7 @@ function App() {
       <Login />
       <CrearEventos />
       <ListaEventos />
+      <PanelCreador />
       <Footer />
     </>
   )

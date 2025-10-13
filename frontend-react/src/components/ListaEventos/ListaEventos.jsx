@@ -2,37 +2,45 @@ import { use, useEffect, useState } from "react";
 import "./ListaEventos.css";
 import { Search } from "lucide-react";
 import CartaEvento from "../CartaEvento/CartaEvento";
+import DetalleEvento from "../DetalleEvento/DetalleEvento";
 
 function ListaEventos() {
   const [eventos, setEventos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
 
-  const categorias = [
-    { nombre: "Todos", icono: "⭐" },
-    { nombre: "Culturales", icono: "🎭" },
-    { nombre: "Deportes", icono: "⚽" },
-    { nombre: "Educativos", icono: "🎓" },
-    { nombre: "Ferias", icono: "🛍️" },
-    { nombre: "Fiestas", icono: "🥳️" },
-    { nombre: "Otros", icono: "📚" },
-  ];
+  const cargarEventos = async () => {
+    try {
+      const respuesta = await fetch("/eventos.json");
+
+      if (!respuesta.ok) {
+        throw new Error(`HTTP Error: ${respuesta.status}`);
+      }
+
+      const resultado = await respuesta.json();
+      setEventos(resultado);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const cargarCategorias = async () => {
+    try {
+      const respuesta = await fetch("/categorias.json");
+
+      if (!respuesta.ok) {
+        throw new Error(`HTTP Error: ${respuesta.status}`);
+      }
+
+      const resultado = await respuesta.json();
+      setCategorias(resultado)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
-    const cargarEventos = async () => {
-      try {
-        const respuesta = await fetch("/eventos.json");
-
-        if (!respuesta.ok) {
-          throw new Error(`HTTP Error: ${respuesta.status}`);
-        }
-
-        const resultado = await respuesta.json();
-        setEventos(resultado);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
     cargarEventos();
+    cargarCategorias();
   }, []);
 
   return (
@@ -55,13 +63,14 @@ function ListaEventos() {
             </button>
           ))}
         </div>
-
       </div>
       <div className="lista-eventos">
         {eventos.map((evento) => (
           <CartaEvento evento={evento} key={evento.titulo} />
         ))}
       </div>
+
+      {eventos.length > 0 && <DetalleEvento evento={eventos[0]}/> }
     </main>
   );
 }
