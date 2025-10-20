@@ -69,8 +69,6 @@ function ListaEventos() {
           <CartaEvento evento={evento} key={evento.titulo} />
         ))}
       </div>
-
-      {eventos.length > 0 && <DetalleEvento evento={eventos[0]}/> }
     </main>
   );
 }

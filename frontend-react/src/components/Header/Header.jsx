@@ -2,6 +2,7 @@ import './Header.css'
 import logo from "../../assets/Olaventos-logo.png"
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
+import { Link } from 'react-router'
 
 function Header () {
 
@@ -13,23 +14,23 @@ function Header () {
 
     return (
       <header>
-        <a href="" className="imagen-container">
+        <Link to="/" className="imagen-container">
           <img src={logo} alt="Logo de la pagina" />
-        </a>
+        </Link>
 
         <button className="menu-hamburguesa" onClick={toggleMenu}>
           <Menu />
         </button>
 
         <ul className={`menu-nav ${menuAbierto ? 'activo' : ''}`}>
-          <li><a href="">Inicio</a></li>
-          <li><a href="">Eventos</a></li>
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/eventos">Eventos</Link></li>
         </ul>
 
         <div className="header-buttons">
           <button className="tema"></button>
 
-          <a href="" className="login">Iniciar Sesion</a>
+          <Link to="/login" className="login">Iniciar Sesion</Link>
         </div>
       </header>
     )

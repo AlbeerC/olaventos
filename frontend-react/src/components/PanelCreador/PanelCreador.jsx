@@ -3,6 +3,7 @@ import { formatearFecha } from "../../utils/formatearFecha"
 import { useEffect, useState } from "react";
 import PanelCreadorCarta from "../PanelCreadorCarta/PanelCreadorCarta"
 import { Plus } from "lucide-react";
+import { Link } from "react-router"
 
 function PanelCreador() {
 
@@ -31,12 +32,12 @@ function PanelCreador() {
     <main className="panel-creador-main">
       <section className="titulos">
         <h2>Mis eventos</h2>
-        <a href="./crearEvento.html">
+        <Link to="/crear-evento">
           <button>
             <Plus /> 
             <span>Nuevo evento</span>
           </button>
-        </a>
+        </Link>
       </section>
 
       <section className="eventos-creador">

@@ -1,6 +1,7 @@
 import "./Inicio.css";
 import { MoveRight } from "lucide-react";
 import MapaInicio from "./MapaInicio";
+import { Link } from 'react-router'
 
 function Inicio() {
 
@@ -9,7 +10,7 @@ function Inicio() {
       <section className="hero">
         <div className="hero-text">
           <h2>Descubrí lo mejor de Olavarría, en un solo lugar</h2>
-          <a href="">Ver eventos</a>
+          <Link to="/eventos">Ver eventos</Link>
         </div>
       </section>
 
@@ -47,9 +48,9 @@ function Inicio() {
           Registrá tu evento y llegá a miles de personas en Olavarría. Es fácil,
           rápido y completamente gratuito.
         </p>
-        <a href="">
+        <Link to="/crear-evento">
           Crear evento gratis <MoveRight />
-        </a>
+        </Link>
       </div>
 
       <section className="contacto">
