@@ -1,4 +1,5 @@
 import { Heart } from "lucide-react";
+import { Link } from 'react-router'
 
 function CartaEvento({evento}) {
   return (
@@ -8,7 +9,7 @@ function CartaEvento({evento}) {
       <h3>{evento.fecha}</h3>
       <p>{evento.lugar}</p>
       <img src={evento.imagen} />
-      <a href="">Ver info</a>
+      <Link to='/detalle-evento'>Ver info</Link>
     </div>
   );
 }
