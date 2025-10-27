@@ -48,7 +48,7 @@ function Inicio() {
           Registrá tu evento y llegá a miles de personas en Olavarría. Es fácil,
           rápido y completamente gratuito.
         </p>
-        <Link to="/crear-evento">
+        <Link to="/login-creador">
           Crear evento gratis <MoveRight />
         </Link>
       </div>

@@ -1,16 +1,40 @@
 import "./DetalleEvento.css";
-import { formatearFecha } from "../../utils/formatearFecha"
+import { formatearFecha } from "../../utils/formatearFecha";
 import MapaDetalle from "./MapaDetalle";
+import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 
-function DetalleEvento( {evento} ) {
+function DetalleEvento() {
+  const { id } = useParams();
+  const [evento, setEvento] = useState(null)
+
+  useEffect(() => {
+    const cargarEvento = async () => {
+      try {
+        const respuesta = await fetch("/eventos.json");
+
+        if (!respuesta.ok) {
+          throw new Error(`HTTP Error: ${respuesta.status}`);
+        }
+
+        const resultado = await respuesta.json();
+        setEvento(resultado.filter((ev) => ev.id == id)[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    cargarEvento()
+  }, [id]);
+
+  if (!evento) return <p>...</p>
+
   return (
     <section className="detalle-contenedor">
       <h2>{evento.titulo}</h2>
       <div className="detalle-flex">
         <div className="izquierda">
-          <p>
-             {evento.categoria}
-          </p>
+          <p>{evento.categoria}</p>
           <p>
             💼 Organiza <span>{evento.organizador}</span>
           </p>

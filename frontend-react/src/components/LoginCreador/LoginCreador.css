@@ -1,0 +1,91 @@
+.main-login-organizador {
+    padding: 5rem 0;
+}
+
+.main-login-organizador .form-organizador {
+    background-color: #F5F5F5;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 50rem;
+    margin: 5rem auto;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.main-login-organizador h2 {
+  padding-bottom: 1rem;
+  font-size: 3rem;
+}
+
+.main-login-organizador p {
+  font-size: 1.7rem;
+  padding-bottom: 2rem;
+  color: #727272;
+}
+
+
+.main-login-organizador .form-organizador .campo {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-login-organizador .form-organizador .campo label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 1.7rem;
+}
+
+.main-login-organizador .form-organizador .campo input {
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    transition: border 0.3s ease;
+}
+
+.main-login-organizador .form-organizador textarea {
+    height: 10rem;
+    padding: 1rem;
+}
+
+.main-login-organizador .form-organizador .campo input:focus {
+    outline: none;
+    border-color: #0064F9;
+}
+
+.main-login-organizador .form-organizador button {
+    background-color: #0064F9;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.main-login-organizador .form-organizador button:hover {
+    background-color: #0052c3;
+}
+
+.main-login-organizador .form-organizador .iniciar-sesion-link {
+    padding-top: 2rem;
+    font-size: 2rem;
+}
+
+.main-login-organizador .form-organizador .iniciar-sesion-link a {
+    color: var(--color-principal);
+    text-decoration: none;
+}
+
+.main-login-organizador .form-organizador .inicia-link {
+    padding-top: 2rem;
+    font-size: 1.8rem;
+}
+
+.main-login-organizador .form-organizador .inicia-link a {
+    color: var(--color-principal);
+    text-decoration: none;
+}

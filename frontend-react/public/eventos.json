@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "titulo": "Master Stroke - Tributo a Queen",
     "categoria": "Culturales",
     "descripcion": "Viví una noche inolvidable con Master Stroke, el mejor tributo a Queen en Argentina. Reviví los grandes clásicos de Freddie Mercury con una puesta en escena imponente en el Teatro Municipal.",
@@ -12,6 +13,7 @@
     "imagen": "https://www.mgdifusion.com.ar/wp-content/uploads/2022/02/Master-stroke.jpg"
   },
   {
+    "id": 2,
     "titulo": "Taller de Arte, Música y Manualidades para Niños",
     "categoria": "Educativos",
     "descripcion": "Un espacio creativo para chicos y chicas donde podrán expresarse a través del arte, la música y las manualidades. Actividad gratuita para toda la familia, coordinada por profesionales del área cultural.",
@@ -24,6 +26,7 @@
     "imagen": "https://constanzadelfino.com.ar/wp-content/uploads/2023/01/arte-para-ni%C3%B1os-en-cordoba.png"
   },
   {
+    "id": 3,
     "titulo": "Torneo Nacional de Selecciones de Básquet",
     "categoria": "Deportes",
     "descripcion": "No te pierdas la inauguración del torneo más esperado del año. Equipos de todo el país se enfrentan en una jornada llena de emoción y deporte de alto nivel. Ideal para amantes del básquet y familias.",
@@ -36,6 +39,7 @@
     "imagen": "https://www.competize.com/blog/wp-content/uploads/2019/12/organizar-torneo-basquet-competize-scaled.jpg"
   },
   {
+    "id": 4,
     "titulo": "Tertulia Familiar - Teatro Independiente",
     "categoria": "Culturales",
     "descripcion": "Una obra teatral emotiva y divertida para compartir en familia. Historias cotidianas y personajes entrañables en una puesta íntima de la Compañía Independiente. Ideal para una salida distinta.",
@@ -48,6 +52,7 @@
     "imagen": "https://humanidades.com/wp-content/uploads/2018/09/obra-de-teatro-5-e1578944452922.jpg"
   },
   {
+    "id": 5,
     "titulo": "Feria Gastronómica 'Sabores del Mundo'",
     "categoria": "Ferias",
     "descripcion": "Una experiencia única para los amantes de la gastronomía. Platos típicos de diferentes países, shows en vivo y un paseo ideal para disfrutar con amigos o familia. Entrada libre y gratuita.",
