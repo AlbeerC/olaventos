@@ -46,6 +46,12 @@ header ul li a:hover {
   padding: 1rem 2rem;
 }
 
+.header-buttons .boton-usuario {
+  color: black;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
 
 .header-buttons .login:hover {
   opacity: 0.8;

@@ -129,3 +129,16 @@ footer .iconos i:hover {
 textarea {
   resize: none;
 }
+
+.pagina-bloqueada {
+  margin: 5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.pagina-bloqueada p {
+  font-size: 3rem;
+  font-weight: bold;
+}

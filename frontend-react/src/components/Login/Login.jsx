@@ -1,13 +1,64 @@
 import { useState } from "react";
 import "./Login.css";
+import { useAuth } from "../../context/AuthContext"
+import { useNavigate } from "react-router-dom"  
+import { toast } from 'react-toastify'
 
 function Login() {
   const [esLogin, setEsLogin] = useState(true);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [nombre, setNombre] = useState('')
+
+  const navigate = useNavigate()
+
+  const { login } = useAuth()
+
+  const enviarForm = async (e) => {
+    e.preventDefault()
+
+    const url = esLogin
+      ? 'http://localhost:3000/auth/login'
+      : 'http://localhost:3000/auth/register'
+
+    const body = esLogin
+    ? {email, password}
+    : {nombre, email, password, rol: "user"}
+
+
+    try {
+      const respuesta = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+
+      if (!respuesta.ok) {
+        throw new Error(`HTTP Error: ${respuesta.status}`)
+      }
+
+      const resultado = await respuesta.json()
+
+      if (esLogin) {
+        login(resultado.user, resultado.access_token)
+        toast.success("Logueado correctamente")
+        setEmail("")
+        setPassword("")
+        navigate("/panel-usuario")
+      } else {
+        register()
+        toast.success('Usuario registrado! Ahora logueate.')
+        setEsLogin(true)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   return (
     <div className="contenido">
       <main className="main-login">
-        <form className="login-form">
+        <form className="login-form" onSubmit={enviarForm}>
           <h2>{esLogin ? "Inicia sesión" : "Crear cuenta"}</h2>
           <p className="text">
             {esLogin
@@ -24,6 +75,8 @@ function Login() {
               name="nombre"
               placeholder="Nombre"
               required
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
             />
           </div>
           }
@@ -35,6 +88,8 @@ function Login() {
               name="email"
               placeholder="tu@email.com"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="campo">
@@ -45,6 +100,8 @@ function Login() {
               name="password"
               placeholder="********"
               required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           { !esLogin && 
