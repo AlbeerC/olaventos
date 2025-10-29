@@ -3,10 +3,13 @@ import logo from "../../assets/Olaventos-logo.png"
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { Link } from 'react-router'
+import { useAuth } from '../../context/AuthContext'
 
 function Header () {
 
     const [menuAbierto, setMenuAbierto] = useState(false)
+
+    const { user } = useAuth()
 
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto)
@@ -30,7 +33,10 @@ function Header () {
         <div className="header-buttons">
           <button className="tema"></button>
 
-          <Link to="/login" className="login">Iniciar Sesion</Link>
+          {user ? 
+            <Link to="/panel-usuario" className='boton-usuario'>{user.nombre}</Link> :
+            <Link to="/login" className="login">Iniciar Sesion</Link>
+          }
         </div>
       </header>
     )
