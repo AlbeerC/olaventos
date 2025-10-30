@@ -1,18 +1,59 @@
-import './LoginCreador.css'
-import { Link, useNavigate } from 'react-router'
+import { useState } from "react";
+import "./LoginCreador.css";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 function LoginCreador() {
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [descripcion, setDescripcion] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmarPassword, setConfirmarPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const irAlPanel = (e) => {
-    e.preventDefault()
-    navigate('/panel-creador')
-  }
+  const enviarForm = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmarPassword) {
+      toast.error("Las contraseñas no coinciden");
+      return;
+    }
+
+    const url = "http://localhost:3000/auth/register-organizer"
+
+    const body = { nombre, email, password, descripcion }
+
+    try {
+      const respuesta = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      const resultado = await respuesta.json();
+
+      if (!respuesta.ok) {
+        throw new Error(resultado.message || "Error en el servidor");
+      }
+
+      toast.success("Se ha enviado la petición. Te notificaremos cuando la hayamos revisado.");
+      setEmail("");
+      setPassword("");
+      setConfirmarPassword("")
+      setDescripcion("")
+      setNombre("")
+      navigate("/login");
+    
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <main className="main-login-organizador">
-      <form className="form-organizador" onSubmit={irAlPanel}>
+      <form className="form-organizador" onSubmit={enviarForm}>
         <h2>Crear cuenta</h2>
         <p>
           Registrate como organizador para registrar tus eventos. Se enviará la
@@ -27,6 +68,8 @@ function LoginCreador() {
             name="nombre"
             placeholder="Nombre organización"
             required
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
 
@@ -38,6 +81,8 @@ function LoginCreador() {
             name="contacto"
             placeholder="tu@email.com"
             required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -48,6 +93,8 @@ function LoginCreador() {
             name="descripcion"
             placeholder="Descripción del tipo de eventos"
             required
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
           ></textarea>
         </div>
 
@@ -59,6 +106,8 @@ function LoginCreador() {
             name="contraseña"
             placeholder="******"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
@@ -70,6 +119,8 @@ function LoginCreador() {
             name="confirmar-contraseña"
             placeholder="******"
             required
+            value={confirmarPassword}
+            onChange={(e) => setConfirmarPassword(e.target.value)}
           />
         </div>
 
@@ -77,7 +128,7 @@ function LoginCreador() {
 
         <p className="inicia-link">
           Tu organización ya está registrada?{" "}
-          <Link to='/login'>Inicia sesión</Link>
+          <Link to="/login">Inicia sesión</Link>
         </p>
       </form>
     </main>
