@@ -8,6 +8,7 @@ function Login() {
   const [esLogin, setEsLogin] = useState(true);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [confirmarPassword, setConfirmarPassword] = useState('') 
   const [nombre, setNombre] = useState('')
 
   const navigate = useNavigate()
@@ -16,6 +17,11 @@ function Login() {
 
   const enviarForm = async (e) => {
     e.preventDefault()
+
+    if (password !== confirmarPassword && !esLogin) {
+      toast.error('Las contraseñas no coinciden')
+      return
+    }
 
     const url = esLogin
       ? 'http://localhost:3000/auth/login'
@@ -33,11 +39,12 @@ function Login() {
         body: JSON.stringify(body)
       })
 
-      if (!respuesta.ok) {
-        throw new Error(`HTTP Error: ${respuesta.status}`)
-      }
-
+      
       const resultado = await respuesta.json()
+      
+      if (!respuesta.ok) {
+        throw new Error(resultado.message || 'Error en el servidor')
+      }
 
       if (esLogin) {
         login(resultado.user, resultado.access_token)
@@ -46,7 +53,6 @@ function Login() {
         setPassword("")
         navigate("/panel-usuario")
       } else {
-        register()
         toast.success('Usuario registrado! Ahora logueate.')
         setEsLogin(true)
       }
@@ -113,6 +119,8 @@ function Login() {
                 name="confirm-password"
                 placeholder="********"
                 required
+                value={confirmarPassword}
+                onChange={(e) => setConfirmarPassword(e.target.value)}
               />
             </div>
           }
