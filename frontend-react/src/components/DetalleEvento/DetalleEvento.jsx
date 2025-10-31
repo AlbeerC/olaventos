@@ -3,29 +3,16 @@ import { formatearFecha } from "../../utils/formatearFecha";
 import MapaDetalle from "./MapaDetalle";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { useEventos } from "../../context/EventosContext";
 
 function DetalleEvento() {
   const { id } = useParams();
-  const [evento, setEvento] = useState(null)
+
+  const { evento, cargarEventoPorId } = useEventos()
 
   useEffect(() => {
-    const cargarEvento = async () => {
-      try {
-        const respuesta = await fetch("/eventos.json");
-
-        if (!respuesta.ok) {
-          throw new Error(`HTTP Error: ${respuesta.status}`);
-        }
-
-        const resultado = await respuesta.json();
-        setEvento(resultado.filter((ev) => ev.id == id)[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    cargarEvento()
-  }, [id]);
+    cargarEventoPorId(id)
+  }, [id])
 
   if (!evento) return <p>...</p>
 
@@ -36,7 +23,7 @@ function DetalleEvento() {
         <div className="izquierda">
           <p>{evento.categoria}</p>
           <p>
-            💼 Organiza <span>{evento.organizador}</span>
+            💼 Organiza <span>Producciones Olavarría</span>
           </p>
           <div>
             <p className="descripcion">{evento.descripcion}</p>
@@ -48,13 +35,9 @@ function DetalleEvento() {
           <p>
             📅 {formatearFecha(evento.fecha)} - {evento.hora} hs
           </p>
-          <p>
-            🎫 Entradas desde ${evento.precioDeEntradas} en:{" "}
-            <span>articket.com/grupotech</span>
-          </p>
           <div className="mapa">
             <p>
-              📍 {evento.lugar} ({evento.dirección})
+              📍 {evento.lugar} ({evento.direccion})
             </p>
             <MapaDetalle />
           </div>

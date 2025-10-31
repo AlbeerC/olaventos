@@ -9,4 +9,4 @@ import { Evento } from './entities/evento.entity';
     controllers: [EventoController],
     providers: [EventoService],
 })
-export class EventsModule { }
+export class EventosModule { }

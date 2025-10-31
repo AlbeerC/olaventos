@@ -1,27 +1,13 @@
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./ListaEventos.css";
 import { Search } from "lucide-react";
 import CartaEvento from "../CartaEvento/CartaEvento";
-import DetalleEvento from "../DetalleEvento/DetalleEvento";
+import { useEventos } from "../../context/EventosContext";
 
 function ListaEventos() {
-  const [eventos, setEventos] = useState([]);
   const [categorias, setCategorias] = useState([]);
 
-  const cargarEventos = async () => {
-    try {
-      const respuesta = await fetch("/eventos.json");
-
-      if (!respuesta.ok) {
-        throw new Error(`HTTP Error: ${respuesta.status}`);
-      }
-
-      const resultado = await respuesta.json();
-      setEventos(resultado);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const { eventos, loading, error, cargarEventos } = useEventos()
 
   const cargarCategorias = async () => {
     try {
@@ -42,6 +28,10 @@ function ListaEventos() {
     cargarEventos();
     cargarCategorias();
   }, []);
+  
+
+  if (error) return <p>Error: {error}</p>
+  if (loading) return <p>Cargando...</p>
 
   return (
     <main className="eventos-main">

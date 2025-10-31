@@ -34,7 +34,9 @@ function Header () {
           <button className="tema"></button>
 
           {user ? 
-            <Link to="/panel-usuario" className='boton-usuario'>{user.nombre}</Link> :
+            <Link to={user.rol === 'organizer' ? '/panel-creador' : 'panel-usuario'} className='boton-usuario'>
+            {user.nombre}
+            </Link> :
             <Link to="/login" className="login">Iniciar Sesion</Link>
           }
         </div>

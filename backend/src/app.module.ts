@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { AuthModule } from './auth/auth.module';
+import { EventosModule } from './organizadores/evento.module';
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { AuthModule } from './auth/auth.module';
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: true, // solo dev
       }),
-    }), UsuariosModule, AuthModule,
+    }), UsuariosModule, AuthModule, EventosModule
   ],
 })
 export class AppModule {}

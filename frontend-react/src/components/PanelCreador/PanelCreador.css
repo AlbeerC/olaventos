@@ -127,6 +127,13 @@
   opacity: 0.85;
 }
 
+.cerrar-sesion-div {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5rem 1rem 5rem;
+}
+
 
 @media (max-width: 768px) {
   .evento {

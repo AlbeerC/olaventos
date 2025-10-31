@@ -1,21 +1,39 @@
-import { IsString, IsNotEmpty, IsDateString, IsNumber, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString, IsDateString, IsNumber } from 'class-validator'
 
 export class CreateEventoDto {
-    @IsString()
-    @IsNotEmpty()
-    titulo: string;
+  @IsNotEmpty()
+  @IsString()
+  titulo: string
 
-    @IsString()
-    @IsOptional()
-    descripcion?: string;
+  @IsNotEmpty()
+  @IsString()
+  descripcion: string
 
-    @IsDateString()
-    fecha: string;
+  @IsNotEmpty()
+  @IsDateString()
+  fecha: string // ISO string desde frontend
 
-    @IsString()
-    @IsNotEmpty()
-    lugar: string;
+  @IsNotEmpty()
+  @IsString()
+  hora: string
 
-    @IsNumber()
-    organizadorId: number;
+  @IsNotEmpty()
+  @IsString()
+  categoria: string
+
+  @IsNotEmpty()
+  @IsString()
+  lugar: string
+
+  @IsNotEmpty()
+  @IsString()
+  direccion: string
+
+  @IsNotEmpty()
+  @IsString()
+  imagen: string // ruta o URL
+
+  @IsNotEmpty()
+  @IsNumber()
+  organizadorId: number
 }

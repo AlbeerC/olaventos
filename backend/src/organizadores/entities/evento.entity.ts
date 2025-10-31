@@ -1,22 +1,34 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
 
 @Entity('eventos')
 export class Evento {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number
 
-    @Column()
-    titulo: string;
+  @Column()
+  titulo: string
 
-    @Column({ nullable: true })
-    descripcion: string;
+  @Column()
+  descripcion: string
 
-    @Column()
-    fecha: Date;
+  @Column()
+  fecha: Date
 
-    @Column()
-    lugar: string;
+  @Column()
+  hora: string
 
-    @Column()
-    organizadorId: number; // referencia al organizador
+  @Column()
+  categoria: string
+
+  @Column()
+  lugar: string
+
+  @Column()
+  direccion: string
+
+  @Column()
+  imagen: string // ruta o URL de la imagen
+
+  @Column()
+  organizadorId: number
 }
