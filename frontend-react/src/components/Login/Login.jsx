@@ -51,7 +51,7 @@ function Login() {
         toast.success("Logueado correctamente")
         setEmail("")
         setPassword("")
-        navigate("/panel-usuario")
+        resultado.user.rol === 'organizer' ? navigate("/panel-creador") : navigate("/panel-usuario")
       } else {
         toast.success('Usuario registrado! Ahora logueate.')
         setEsLogin(true)
