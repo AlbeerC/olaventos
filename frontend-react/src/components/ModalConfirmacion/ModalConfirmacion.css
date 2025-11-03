@@ -1,0 +1,192 @@
+/* Fondo semi-transparente con efecto blur */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Contenedor del modal con glassmorphism */
+.modal-container {
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  padding: 36px 44px;
+  border-radius: 20px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  text-align: center;
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto decorativo sutil en el fondo */
+.modal-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(231, 76, 60, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Mensaje con mejor tipografía */
+.modal-message {
+  font-size: 19px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  color: #2c3e50;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.01em;
+}
+
+/* Contenedor de botones */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Estilo base para botones */
+.btn-confirm,
+.btn-cancel {
+  border: none;
+  padding: 13px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 100px;
+}
+
+.btn-confirm:active,
+.btn-cancel:active {
+  transform: scale(0.96);
+}
+
+/* Botón confirmar con gradiente y efectos */
+.btn-confirm {
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+  box-shadow: 
+    0 4px 15px rgba(231, 76, 60, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.2) inset;
+}
+
+.btn-confirm::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.btn-confirm:hover {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+  box-shadow: 
+    0 6px 20px rgba(231, 76, 60, 0.5),
+    0 1px 3px rgba(0, 0, 0, 0.3) inset;
+  transform: translateY(-2px);
+}
+
+.btn-confirm:hover::before {
+  opacity: 1;
+}
+
+/* Botón cancelar con estilo moderno */
+.btn-cancel {
+  background: linear-gradient(145deg, #ecf0f1 0%, #dce1e3 100%);
+  color: #2c3e50;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(255, 255, 255, 0.5) inset;
+}
+
+.btn-cancel:hover {
+  background: linear-gradient(145deg, #bdc3c7 0%, #95a5a6 100%);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.15),
+    0 1px 2px rgba(255, 255, 255, 0.3) inset;
+  transform: translateY(-2px);
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    transform: translateY(-30px) scale(0.95); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0) scale(1); 
+    opacity: 1; 
+  }
+}
+
+/* Responsive mejorado */
+@media (max-width: 480px) {
+  .modal-container {
+    padding: 28px 24px;
+    max-width: 340px;
+  }
+
+  .modal-message {
+    font-size: 17px;
+    margin-bottom: 24px;
+  }
+
+  .modal-buttons {
+    flex-direction: column-reverse;
+    gap: 10px;
+  }
+
+  .btn-confirm,
+  .btn-cancel {
+    width: 100%;
+    padding: 14px 24px;
+  }
+}
+
+/* Estados de focus para accesibilidad */
+.btn-confirm:focus,
+.btn-cancel:focus {
+  outline: 3px solid rgba(52, 152, 219, 0.4);
+  outline-offset: 2px;
+}
+
+/* Efecto al hacer clic en el overlay */
+.modal-overlay:active .modal-container {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}

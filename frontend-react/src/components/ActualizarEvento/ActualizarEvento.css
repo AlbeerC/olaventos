@@ -1,0 +1,26 @@
+.form-editar-evento {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: calc(50% - 50rem);
+    right: calc(50% - 50rem);
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 5rem 2rem 2rem 2rem;
+    overflow: auto;
+    border-radius: 0;
+}
+
+.btn-cancelar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

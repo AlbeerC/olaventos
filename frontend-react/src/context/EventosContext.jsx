@@ -57,17 +57,69 @@ export const EventosProvider = ({ children }) => {
         body: JSON.stringify(nuevoEvento),
       });
 
-      const resultado = await respuesta.json(); // <--- usar la misma variable
+      const resultado = await respuesta.json();
 
       if (!respuesta.ok) {
-        console.log("Error del backend:", resultado); // ahora sí muestra el mensaje real
         throw new Error(`HTTP error: ${respuesta.status}`);
       }
 
-      console.log("Evento creado:", resultado);
       setEventos((prev) => [...prev, resultado]);
     } catch (err) {
       console.log(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const eliminarEvento = async (id) => {
+    setError(null);
+    setLoading(true);
+
+    try {
+      const respuesta = await fetch(`http://localhost:3000/eventos/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!respuesta.ok) {
+        throw new Error("Error al eliminar el evento");
+      }
+
+      setEventos((prev) => prev.filter((ev) => ev.id !== id));
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const actualizarEvento = async (id, datosActualizados) => {
+    setError(null);
+    setLoading(true);
+
+    // Evitamos mandar el id al backend
+    const { id: _, ...bodyData } = datosActualizados;
+
+    try {
+      const respuesta = await fetch(`http://localhost:3000/eventos/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...bodyData,
+        }),
+      });
+
+      if (!respuesta.ok) {
+        throw new Error("Error al actualizar el evento");
+      }
+
+      const eventoActualizado = await respuesta.json();
+
+      // Actualizamos el estado global
+      setEventos((prev) =>
+        prev.map((ev) => (ev.id === id ? eventoActualizado : ev))
+      );
+    } catch (error) {
+      setError(error.message);
     } finally {
       setLoading(false);
     }
@@ -81,6 +133,8 @@ export const EventosProvider = ({ children }) => {
     cargarEventoPorId,
     evento: eventoDetalle,
     crearEvento,
+    eliminarEvento,
+    actualizarEvento,
   };
 
   return (
