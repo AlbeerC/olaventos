@@ -2,8 +2,13 @@ import "./Inicio.css";
 import { MoveRight } from "lucide-react";
 import MapaInicio from "./MapaInicio";
 import { Link } from 'react-router'
+import { useAuth } from "../../context/AuthContext";
 
 function Inicio() {
+
+  const { user } = useAuth();
+
+  const isOrganizador = user?.rol === "organizer";
 
   return (
     <main>
@@ -48,7 +53,7 @@ function Inicio() {
           Registrá tu evento y llegá a miles de personas en Olavarría. Es fácil,
           rápido y completamente gratuito.
         </p>
-        <Link to="/login-creador">
+        <Link to={isOrganizador ? "/crear-evento" : "/login-creador"}>
           Crear evento gratis <MoveRight />
         </Link>
       </div>

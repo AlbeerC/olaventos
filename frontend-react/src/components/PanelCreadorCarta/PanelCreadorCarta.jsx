@@ -1,6 +1,27 @@
-import { formatearFecha } from "../../utils/formatearFecha"
+import { useState } from "react";
+import { formatearFecha } from "../../utils/formatearFecha";
+import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion"
 
-function PanelCreadorCarta( {evento} ) {
+function PanelCreadorCarta({ evento, eliminarEvento, actualizarEvento }) {
+  const [modalAbierto, setModalAbierto] = useState(false);
+  const [eventoAEliminar, setEventoAEliminar] = useState(null);
+
+  const handleEliminarClick = (id) => {
+    setEventoAEliminar(id);
+    setModalAbierto(true);
+  };
+
+  const confirmarEliminar = () => {
+    eliminarEvento(eventoAEliminar);
+    setModalAbierto(false);
+    setEventoAEliminar(null);
+  };
+
+  const cancelarEliminar = () => {
+    setModalAbierto(false);
+    setEventoAEliminar(null);
+  };
+
   return (
     <div className="evento">
       <div class="arriba">
@@ -10,14 +31,26 @@ function PanelCreadorCarta( {evento} ) {
       <img src={evento.imagen} alt={evento.titulo} />
       <p class="fecha">{formatearFecha(evento.fecha)}</p>
       <p>
-        {evento.lugar} - {evento.dirección}
+        {evento.lugar} - {evento.direccion}
       </p>
       <div class="botones">
-        <button onclick="window.location.href='./crearEvento.html'">
+        <button onClick={() => actualizarEvento(evento)}>
           Editar
         </button>
-        <button class="eliminar-btn">Eliminar</button>
+        <button
+          class="eliminar-btn"
+          onClick={() => handleEliminarClick(evento.id)}
+        >
+          Eliminar
+        </button>
       </div>
+
+      <ModalConfirmacion
+        isOpen={modalAbierto}
+        message="¿Estás seguro que quieres eliminar este evento?"
+        onConfirm={confirmarEliminar}
+        onCancel={cancelarEliminar}
+      />
     </div>
   );
 }
