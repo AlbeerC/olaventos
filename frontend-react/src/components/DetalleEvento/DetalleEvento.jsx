@@ -7,7 +7,7 @@ import { useEventos } from "../../context/EventosContext";
 
 function DetalleEvento() {
   const { id } = useParams();
-
+  
   const { evento, cargarEventoPorId } = useEventos()
 
   useEffect(() => {
@@ -22,9 +22,7 @@ function DetalleEvento() {
       <div className="detalle-flex">
         <div className="izquierda">
           <p>{evento.categoria}</p>
-          <p>
-            💼 Organiza <span>Producciones Olavarría</span>
-          </p>
+          {evento.organizadorNombre && <p>👤 Organiza <span>{evento.organizadorNombre}</span></p>}
           <div>
             <p className="descripcion">{evento.descripcion}</p>
             <img src={evento.imagen} alt={evento.titulo} />

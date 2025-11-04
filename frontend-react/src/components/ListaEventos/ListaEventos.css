@@ -143,18 +143,23 @@
     opacity: 0.8;
 }
 
-.lista-eventos .evento-card svg {
-    color: #ff0000;
-    width: 5rem;
-    height: 5rem;
+.lista-eventos .evento-card .boton-favs {
     position: absolute;
     top: -1.8rem;
     right: -1.8rem;
     transition: transform 0.5s ease;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 
-.lista-eventos .evento-card svg:hover {
+.lista-eventos .evento-card .boton-favs svg {
+    color: #ff0000;
+    width: 5rem;
+    height: 5rem;
+}
+
+.lista-eventos .evento-card .boton-favs:hover {
     transform: scale(1.2);
 }
 

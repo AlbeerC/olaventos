@@ -1,6 +1,6 @@
 [
-    { "nombre": "Culturales", "icono": "🎭" },
     { "nombre": "Todos", "icono": "⭐" },
+    { "nombre": "Culturales", "icono": "🎭" },
     { "nombre": "Deportes", "icono": "⚽" },
     { "nombre": "Educativos", "icono": "🎓" },
     { "nombre": "Ferias", "icono": "🛍️" },
