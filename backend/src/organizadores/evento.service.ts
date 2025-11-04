@@ -21,11 +21,35 @@ export class EventoService {
         return await this.eventoRepository.find();
     }
 
-    async findOne(id: number): Promise<Evento> {
-        const evento = await this.eventoRepository.findOne({ where: { id } });
-        if (!evento) throw new NotFoundException(`Evento con id ${id} no encontrado`);
-        return evento;
+    // eventos.service.ts
+    async findOne(id: number) {
+        const evento = await this.eventoRepository
+            .createQueryBuilder('evento')
+            .leftJoin('usuarios', 'usuario', 'usuario.id = evento.organizadorId')
+            .addSelect(['usuario.nombre'])
+            .where('evento.id = :id', { id })
+            .getRawOne()
+
+        if (!evento) {
+            throw new NotFoundException('Evento no encontrado')
+        }
+
+        return {
+            id: evento.evento_id,
+            titulo: evento.evento_titulo,
+            organizadorId: evento.evento_organizadorId,
+            organizadorNombre: evento.usuario_nombre,
+            fecha: evento.evento_fecha,
+            hora: evento.evento_hora,
+            lugar: evento.evento_lugar,
+            descripcion: evento.evento_descripcion,
+            imagen: evento.evento_imagen,
+            categoria: evento.evento_categoria,
+            direccion: evento.evento_direccion,
+
+        }
     }
+
 
     async update(id: number, updateEventoDto: UpdateEventoDto): Promise<Evento> {
         const evento = await this.findOne(id);

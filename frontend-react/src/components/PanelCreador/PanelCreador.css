@@ -134,6 +134,12 @@
   padding: 0 5rem 1rem 5rem;
 }
 
+.sin-eventos {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+}
+
 
 @media (max-width: 768px) {
   .evento {

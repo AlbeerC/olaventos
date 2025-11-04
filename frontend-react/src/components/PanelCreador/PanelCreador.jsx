@@ -80,6 +80,12 @@ function PanelCreador() {
         </Link>
       </section>
 
+      {misEventos.length === 0 && (
+        <div className="eventos-creador">
+          <p className="sin-eventos">No tenés eventos creados</p>
+        </div>
+      )}
+
       <section className="eventos-creador">
         {misEventos?.map((evento) => (
           <PanelCreadorCarta
