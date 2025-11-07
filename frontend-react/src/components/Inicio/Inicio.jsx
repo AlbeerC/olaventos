@@ -1,8 +1,8 @@
 import "./Inicio.css";
 import { MoveRight } from "lucide-react";
-import MapaInicio from "./MapaInicio";
 import { Link } from 'react-router'
 import { useAuth } from "../../context/AuthContext";
+import Carrusel from "./Carrusel";
 
 function Inicio() {
 
@@ -43,7 +43,7 @@ function Inicio() {
 
         <div className="eventos-destacados">
           <h2>Eventos destacados</h2>
-          <MapaInicio />
+          <Carrusel />
         </div>
       </section>
 

@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import { Favorito } from './favoritos/favoritos.entity'
 
 export enum UserRole {
   USER = 'user',
@@ -32,4 +33,7 @@ export class Usuario {
 
   @Column({ default: true })
   aprobado: boolean
+
+  @OneToMany(() => Favorito, favorito => favorito.usuario)
+  favoritos: Favorito[]
 }

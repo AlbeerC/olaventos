@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import CartaEvento from "../CartaEvento/CartaEvento";
 import { useEventos } from "../../context/EventosContext";
 import { useAuth } from "../../context/AuthContext";
+import { useFavoritos } from "../../context/FavoritosContext";
 import { toast } from "react-toastify";
 
 function ListaEventos() {
@@ -13,6 +14,7 @@ function ListaEventos() {
 
   const { eventos, loading, error, cargarEventos } = useEventos();
   const { user } = useAuth();
+  const { agregarFavorito, estaEnFavorito } = useFavoritos();
 
   const cargarCategorias = async () => {
     try {
@@ -26,13 +28,6 @@ function ListaEventos() {
       setCategorias(resultado);
     } catch (error) {
       console.log(error);
-    }
-  };
-
-  const agregarFavorito = () => {
-    if (!user) {
-      toast.error("Inicia sesión para agregar favoritos");
-      return;
     }
   };
 
@@ -99,6 +94,7 @@ function ListaEventos() {
             evento={evento}
             key={evento.titulo}
             agregarFavorito={agregarFavorito}
+            estaEnFavorito={estaEnFavorito}
           />
         ))}
       </div>
