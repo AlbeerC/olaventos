@@ -1,31 +1,14 @@
 import { Calendar, Bookmark, Bell, MapPin, Edit2, Trash2, ChevronRight } from 'lucide-react';
 import './PanelUsuario.css';
 import { useAuth } from '../../context/AuthContext';
+import { useFavoritos } from '../../context/FavoritosContext';
 import { toast } from 'react-toastify'
+import { useEffect } from 'react';
+import { Link } from 'react-router'
+import { formatearFecha } from '../../utils/formatearFecha'
 
 function PanelUsuario () {
   // Datos ficticios
-  const usuario = {
-    nombre: "Usuario",
-    eventosAgendados: 2,
-    eventosMarcados: 5
-  };
-
-  const misEventos = [
-    {
-      id: 1,
-      titulo: "Conferencia tecnológica",
-      fecha: "5 de agosto del 2025",
-      ubicacion: "Teatro municipal - Rivadavia 2800"
-    },
-    {
-      id: 2,
-      titulo: "Festival de música local",
-      fecha: "12 de agosto del 2025",
-      ubicacion: "Parque Central - Av. Libertador 1500"
-    }
-  ];
-
   const notificaciones = [
     {
       id: 1,
@@ -40,6 +23,11 @@ function PanelUsuario () {
   ];
 
   const { logout, user } = useAuth()
+  const { favoritos, cargarFavoritos, eliminarFavorito } = useFavoritos()
+
+  useEffect(() => {
+    cargarFavoritos()
+  }, [])
 
   const cerrarSesion = () => {
     logout()
@@ -68,8 +56,8 @@ function PanelUsuario () {
                 <Calendar size={32} />
               </div>
               <div className="stat-content">
-                <div className="stat-numero">{usuario.eventosAgendados}</div>
-                <div className="stat-label">Eventos agendados</div>
+                <div className="stat-numero">{favoritos?.length || 0}</div>
+                <div className="stat-label">Eventos favoritos</div>
               </div>
             </div>
 
@@ -78,7 +66,7 @@ function PanelUsuario () {
                 <Bookmark size={32} />
               </div>
               <div className="stat-content">
-                <div className="stat-numero">{usuario.eventosMarcados}</div>
+                <div className="stat-numero">6</div>
                 <div className="stat-label">Marcados "Me interesa"</div>
               </div>
             </div>
@@ -107,25 +95,28 @@ function PanelUsuario () {
           
           {/* Lista de eventos */}
           <div className="eventos-lista">
-            {misEventos.map(evento => (
-              <div key={evento.id} className="evento-card">
-                <h3 className="evento-titulo">{evento.titulo}</h3>
+            {(favoritos.length === 0 || !favoritos) && <p>No tienes eventos guardados en favoritos</p>}
+            {favoritos.length > 0 && favoritos?.map(fav => (
+              <div key={fav.evento.id} className="evento-card">
+                <h3 className="evento-titulo">{fav.evento.titulo}</h3>
                 
                 <div className="evento-detalle">
                   <Calendar size={20} />
-                  <span>{evento.fecha}</span>
+                  <span>{formatearFecha(fav.evento.fecha)}</span>
                 </div>
                 
                 <div className="evento-detalle">
                   <MapPin size={20} />
-                  <span>{evento.ubicacion}</span>
+                  <span>{fav.evento.lugar}  ({fav.evento.direccion})</span>
                 </div>
 
                 <div className="evento-acciones">
-                  <button className="btn-icon btn-eliminar" aria-label="Eliminar evento">
+                  <button className="btn-icon btn-eliminar" aria-label="Eliminar evento" onClick={() => eliminarFavorito(fav.evento.id)}>
                     <Trash2 size={20} />
                   </button>
-                  <button className="btn-mas-info">Más info</button>
+                  <Link to={`/detalle/${fav.evento.id}`} className="btn-mas-info">
+                    Más info
+                  </Link>
                 </div>
               </div>
             ))}

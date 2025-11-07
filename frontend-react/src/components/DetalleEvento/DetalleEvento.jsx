@@ -9,6 +9,7 @@ function DetalleEvento() {
   const { id } = useParams();
   
   const { evento, cargarEventoPorId } = useEventos()
+  console.log(evento)
 
   useEffect(() => {
     cargarEventoPorId(id)
@@ -37,7 +38,7 @@ function DetalleEvento() {
             <p>
               📍 {evento.lugar} ({evento.direccion})
             </p>
-            <MapaDetalle />
+            <MapaDetalle lugar={evento.lugar} direccion={evento.direccion} />
           </div>
         </div>
       </div>

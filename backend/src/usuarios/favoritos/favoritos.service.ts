@@ -1,40 +1,53 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Favorito } from '../../usuarios/favoritos/favoritos.entity';
-import { CreateFavoritoDto } from '../dto/favoritos/create-favoritos.dto';
-import { UpdateFavoritoDto } from '../dto/favoritos/update-favoritos.dto';
+import { Injectable, NotFoundException, ConflictException } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
+import { Repository } from 'typeorm'
+import { Favorito } from '../../usuarios/favoritos/favoritos.entity'
+import { CreateFavoritoDto } from '../dto/favoritos/create-favoritos.dto'
 
 @Injectable()
 export class FavoritosService {
-    constructor(
-        @InjectRepository(Favorito)
-        private readonly favoritoRepository: Repository<Favorito>,
-    ) { }
+  constructor(
+    @InjectRepository(Favorito)
+    private readonly favoritosRepository: Repository<Favorito>,
+  ) {}
 
-    create(createFavoritoDto: CreateFavoritoDto) {
-        const fav = this.favoritoRepository.create(createFavoritoDto);
-        return this.favoritoRepository.save(fav);
-    }
+  async crear(usuarioId: number, eventoId: number) {
+    const existente = await this.favoritosRepository.findOne({
+      where: { usuario: { id: usuarioId }, evento: { id: eventoId } },
+    })
 
-    findAll() {
-        return this.favoritoRepository.find();
-    }
+    if (existente)
+      throw new ConflictException('Este evento ya está en tus favoritos')
 
-    async findOne(id: number) {
-        const fav = await this.favoritoRepository.findOne({ where: { id } });
-        if (!fav) throw new NotFoundException(`Favorito con id ${id} no encontrado`);
-        return fav;
-    }
+    const nuevo = this.favoritosRepository.create({
+      usuario: { id: usuarioId },
+      evento: { id: eventoId },
+    })
 
-    async update(id: number, updateFavoriteDto: UpdateFavoritoDto) {
-        const fav = await this.findOne(id);
-        Object.assign(fav, updateFavoriteDto);
-        return this.favoritoRepository.save(fav);
-    }
+    return this.favoritosRepository.save(nuevo)
+  }
 
-    async remove(id: number) {
-        const fav = await this.findOne(id);
-        await this.favoritoRepository.remove(fav);
-    }
+  async obtenerPorUsuario(usuarioId: number) {
+    const favoritos = await this.favoritosRepository.find({
+      where: { usuario: { id: usuarioId } },
+      relations: ['evento'],
+    })
+
+    if (!favoritos.length)
+      throw new NotFoundException('No tienes eventos en favoritos')
+
+    return favoritos
+  }
+
+  async eliminar(usuarioId: number, eventoId: number) {
+    const resultado = await this.favoritosRepository.delete({
+      usuario: { id: usuarioId },
+      evento: { id: eventoId },
+    })
+
+    if (resultado.affected === 0)
+      throw new NotFoundException('El favorito no existe')
+
+    return { message: 'Favorito eliminado correctamente' }
+  }
 }

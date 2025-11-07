@@ -1,34 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { FavoritosService } from './favoritos.service';
-import { CreateFavoritoDto } from '../dto/favoritos/create-favoritos.dto';
-import { UpdateFavoritoDto } from '../dto/favoritos/update-favoritos.dto';
+import { UseGuards, Controller, Post, Body, Req, Get, Delete, Param } from '@nestjs/common'
+import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard'
+import { FavoritosService } from './favoritos.service'
+import { CreateFavoritoDto } from '../dto/favoritos/create-favoritos.dto'
 
-@Controller('usuarios/favoritos')
+@Controller('favoritos')
 export class FavoritosController {
-    constructor(private readonly favoritosService: FavoritosService) { }
+  constructor(private readonly favoritosService: FavoritosService) {}
 
-    @Post()
-    create(@Body() createFavoritoDto: CreateFavoritoDto) {
-        return this.favoritosService.create(createFavoritoDto);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Post()
+  async crear(@Body() dto: CreateFavoritoDto, @Req() req) {
+    const usuarioId = req.user.userId
+    return this.favoritosService.crear(usuarioId, dto.eventoId)
+  }
 
-    @Get()
-    findAll() {
-        return this.favoritosService.findAll();
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async obtener(@Req() req) {
+    return this.favoritosService.obtenerPorUsuario(req.user.userId)
+  }
 
-    @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.favoritosService.findOne(+id);
-    }
-
-    @Patch(':id')
-    update(@Param('id') id: string, @Body() updateFavoritoDto: UpdateFavoritoDto) {
-        return this.favoritosService.update(+id, updateFavoritoDto);
-    }
-
-    @Delete(':id')
-    remove(@Param('id') id: string) {
-        return this.favoritosService.remove(+id);
-    }
+  @UseGuards(JwtAuthGuard)
+  @Delete(':eventoId')
+  async eliminar(@Param('eventoId') eventoId: number, @Req() req) {
+    return this.favoritosService.eliminar(req.user.userId, eventoId)
+  }
 }
