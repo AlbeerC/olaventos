@@ -11,6 +11,7 @@ import PanelCreador from "./components/PanelCreador/PanelCreador";
 import DetalleEvento from "./components/DetalleEvento/DetalleEvento";
 import LoginCreador from "./components/LoginCreador/LoginCreador"
 import PanelUsuario from "./components/PanelUsuario/PanelUsuario";
+import PanelAdmin from "./components/PanelAdmin/PanelAdmin";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/detalle/:id" element={<DetalleEvento />} />
         <Route path="/login-creador" element={<LoginCreador />} />
         <Route path="/panel-usuario" element={<PanelUsuario /> }/>
+        <Route path="/panel-admin" element={<PanelAdmin /> }/>
       </Routes>
       <Footer />
     </BrowserRouter>

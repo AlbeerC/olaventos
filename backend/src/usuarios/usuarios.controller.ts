@@ -12,6 +12,11 @@ export class UsuariosController {
     return this.usuariosService.findAll()
   }
 
+  @Get('organizadores')
+  findOrganizadores() {
+    return this.usuariosService.findOrganizadores()
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usuariosService.findOne(+id)

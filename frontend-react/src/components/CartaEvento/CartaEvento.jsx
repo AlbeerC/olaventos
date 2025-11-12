@@ -20,7 +20,7 @@ function CartaEvento({evento, agregarFavorito, estaEnFavorito}) {
 
   return (
     <div className="evento-card">
-      {user?.rol !== 'organizer' && 
+      {user?.rol === 'user' && 
       <button className="boton-favs" onClick={mostrarMensaje}>
         {estaEnFavorito(evento.id) ? <FaHeart size={20} /> : <FaRegHeart size={20} />}
       </button>}

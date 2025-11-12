@@ -46,12 +46,19 @@ function Login() {
         throw new Error(resultado.message || 'Error en el servidor')
       }
 
+      const rutasPanel = {
+        organizer: '/panel-creador',
+        admin: '/panel-admin',
+        user: '/panel-usuario'
+      }
+
       if (esLogin) {
         login(resultado.user, resultado.access_token)
         toast.success("Logueado correctamente")
         setEmail("")
         setPassword("")
-        resultado.user.rol === 'organizer' ? navigate("/panel-creador") : navigate("/panel-usuario")
+        navigate(rutasPanel[resultado.user.rol])
+        window.location.reload()
       } else {
         toast.success('Usuario registrado! Ahora logueate.')
         setEsLogin(true)

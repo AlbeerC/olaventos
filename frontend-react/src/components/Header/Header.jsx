@@ -4,15 +4,23 @@ import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import { Link } from 'react-router'
 import { useAuth } from '../../context/AuthContext'
+import { useNavigate } from 'react-router'
 
 function Header () {
 
     const [menuAbierto, setMenuAbierto] = useState(false)
 
     const { user } = useAuth()
+    const navigate = useNavigate()
 
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto)
+    }
+
+    const rutasPanel = {
+      organizer: '/panel-creador',
+      admin: '/panel-admin',
+      user: '/panel-usuario'
     }
 
     return (
@@ -34,7 +42,7 @@ function Header () {
           <button className="tema"></button>
 
           {user ? 
-            <Link to={user.rol === 'organizer' ? '/panel-creador' : 'panel-usuario'} className='boton-usuario'>
+            <Link to={rutasPanel[user.rol]} className='boton-usuario'>
             {user.nombre}
             </Link> :
             <Link to="/login" className="login">Iniciar Sesion</Link>

@@ -63,5 +63,10 @@ export class UsuariosService {
     usuario.aprobado = true
     return this.usuariosRepository.save(usuario)
   }
+
+  // Obtener todos los usuarios organizadores
+  async findOrganizadores(): Promise<Usuario[]> {
+    return await this.usuariosRepository.find({ where: { rol: UserRole.ORGANIZER } })
+  }
 }
 
