@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from "react";
 const EventContext = createContext();
 
 export const EventosProvider = ({ children }) => {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,7 +15,7 @@ export const EventosProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const respuesta = await fetch("http://localhost:3000/eventos");
+      const respuesta = await fetch(`${API_URL}/eventos`);
 
       if (!respuesta.ok) {
         throw new Error(`HTTP error: ${respuesta.status}`);
@@ -32,7 +34,7 @@ export const EventosProvider = ({ children }) => {
     setError(null);
     setLoading(true);
     try {
-      const respuesta = await fetch(`http://localhost:3000/eventos/${id}`);
+      const respuesta = await fetch(`${API_URL}/eventos/${id}`);
 
       if (!respuesta.ok) {
         throw new Error(`HTTP Error: ${respuesta.status}`);
@@ -51,7 +53,7 @@ export const EventosProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const respuesta = await fetch("http://localhost:3000/eventos", {
+      const respuesta = await fetch(`${API_URL}/eventos`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevoEvento),
@@ -76,7 +78,7 @@ export const EventosProvider = ({ children }) => {
     setLoading(true);
 
     try {
-      const respuesta = await fetch(`http://localhost:3000/eventos/${id}`, {
+      const respuesta = await fetch(`${API_URL}/eventos/${id}`, {
         method: "DELETE",
       });
 
@@ -100,7 +102,7 @@ export const EventosProvider = ({ children }) => {
     const { id: _, ...bodyData } = datosActualizados;
 
     try {
-      const respuesta = await fetch(`http://localhost:3000/eventos/${id}`, {
+      const respuesta = await fetch(`${API_URL}/eventos/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

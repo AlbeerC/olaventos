@@ -4,6 +4,8 @@ import { useEffect, useState } from "react"
 import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion"
 
 function PanelAdmin() {
+  const API_URL = import.meta.env.VITE_API_URL
+
   const { user, logout } = useAuth()
   const [usuarios, setUsuarios] = useState([])
   const [loading, setLoading] = useState(false)
@@ -15,7 +17,7 @@ function PanelAdmin() {
     const cargarOrganizadores = async () => {
       try {
         setLoading(true)
-        const respuesta = await fetch("http://localhost:3000/usuarios/organizadores")
+        const respuesta = await fetch(`${API_URL}/usuarios/organizadores`)
 
         if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`)
 
@@ -33,7 +35,7 @@ function PanelAdmin() {
 
   const aprobarUsuario = async (userId) => {
     try {
-      const respuesta = await fetch(`http://localhost:3000/usuarios/${userId}/approve`, {
+      const respuesta = await fetch(`${APU_URL}/usuarios/${userId}/approve`, {
         method: "PATCH",
       })
 
@@ -50,7 +52,7 @@ function PanelAdmin() {
 
   const eliminarUsuario = async (userId) => {
     try {
-      const respuesta = await fetch(`http://localhost:3000/usuarios/${userId}`, {
+      const respuesta = await fetch(`${API_URL}/usuarios/${userId}`, {
         method: "DELETE",
       })
 

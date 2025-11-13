@@ -5,6 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 
 function LoginCreador() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -21,7 +23,7 @@ function LoginCreador() {
       return;
     }
 
-    const url = "http://localhost:3000/auth/register-organizer"
+    const url = `${API_URL}/auth/register-organizer`
 
     const body = { nombre, email, password, descripcion }
 

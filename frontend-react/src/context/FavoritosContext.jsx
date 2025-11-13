@@ -3,6 +3,8 @@ import { createContext, useState, useContext } from "react";
 const FavoritosContext = createContext();
 
 export function FavoritosProvider({ children }) {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [favoritos, setFavoritos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,7 +20,7 @@ export function FavoritosProvider({ children }) {
     setError(null);
 
     try {
-      const res = await fetch("http://localhost:3000/favoritos", {
+      const res = await fetch(`${API_URL}/favoritos`, {
         method: "GET",
         headers,
       });
@@ -41,7 +43,7 @@ export function FavoritosProvider({ children }) {
     setError(null);
 
     try {
-      const res = await fetch("http://localhost:3000/favoritos", {
+      const res = await fetch(`${API_URL}/favoritos`, {
         method: "POST",
         headers,
         body: JSON.stringify({ eventoId }),
@@ -65,7 +67,7 @@ export function FavoritosProvider({ children }) {
     setError(null);
 
     try {
-      const res = await fetch(`http://localhost:3000/favoritos/${eventoId}`, {
+      const res = await fetch(`${API_URL}/favoritos/${eventoId}`, {
         method: "DELETE",
         headers,
       });

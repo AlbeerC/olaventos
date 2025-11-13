@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import { toast } from 'react-toastify'
 
 function Login() {
+  const API_URL = import.meta.env.VITE_API_URL;
+
   const [esLogin, setEsLogin] = useState(true);
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,8 +26,8 @@ function Login() {
     }
 
     const url = esLogin
-      ? 'http://localhost:3000/auth/login'
-      : 'http://localhost:3000/auth/register'
+      ? `${API_URL}/auth/login`
+      : `${API_URL}/auth/register`
 
     const body = esLogin
     ? {email, password}
