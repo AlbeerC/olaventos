@@ -9,11 +9,19 @@ function DetalleEvento() {
   const { id } = useParams();
   
   const { evento, cargarEventoPorId } = useEventos()
-  console.log(evento)
 
   useEffect(() => {
     cargarEventoPorId(id)
   }, [id])
+
+  const categoriasIconos = {
+    "Culturales": "🎭",
+    "Deportes": "⚽",
+    "Educativos": "🎓",
+    "Ferias": "🛍️",
+    "Fiestas": "🥳️",
+    "Otros": "📚"
+  }
 
   if (!evento) return <p>...</p>
 
@@ -22,7 +30,7 @@ function DetalleEvento() {
       <h2>{evento.titulo}</h2>
       <div className="detalle-flex">
         <div className="izquierda">
-          <p>{evento.categoria}</p>
+          <p>{categoriasIconos[evento.categoria]} {evento.categoria}</p>
           {evento.organizadorNombre && <p>👤 Organiza <span>{evento.organizadorNombre}</span></p>}
           <div>
             <p className="descripcion">{evento.descripcion}</p>

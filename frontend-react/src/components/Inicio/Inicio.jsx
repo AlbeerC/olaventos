@@ -1,11 +1,10 @@
 import "./Inicio.css";
 import { MoveRight } from "lucide-react";
-import { Link } from 'react-router'
+import { Link } from "react-router";
 import { useAuth } from "../../context/AuthContext";
 import Carrusel from "./Carrusel";
 
 function Inicio() {
-
   const { user } = useAuth();
 
   const isOrganizador = user?.rol === "organizer";
@@ -80,11 +79,32 @@ function Inicio() {
           </p>
         </div>
 
-        <form className="formulario">
-          <input type="text" placeholder="Nombre" required />
-          <input type="email" placeholder="Email" required />
-          <input type="text" placeholder="Asunto" required />
-          <textarea placeholder="Mensaje" required></textarea>
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          className="formulario"
+        >
+          {/* ACCESS KEY */}
+          <input
+            type="hidden"
+            name="access_key"
+            value="23745eec-2905-43c0-8363-a28a7f42703f"
+          />
+
+          <input
+            type="hidden"
+            name="subject"
+            value="Nuevo mensaje desde el formulario de Olaventos"
+          />
+
+          <input type="text" name="name" placeholder="Nombre" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="text" name="asunto" placeholder="Asunto" required />
+          <textarea name="message" placeholder="Mensaje" required></textarea>
+
+          {/* Desactivar el captcha */}
+          <input type="hidden" name="captcha" value="false" />
+
           <button type="submit">Enviar</button>
         </form>
       </section>

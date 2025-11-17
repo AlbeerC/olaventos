@@ -84,12 +84,12 @@ function ActualizarEvento({
               setFormEdit({ ...formEdit, categoria: e.target.value })
             }
           >
-            <option value="🎭 Culturales">🎭 Culturales</option>
-            <option value="⚽ Deportes">⚽ Deportes</option>
-            <option value="🎓 Educativos">🎓 Educativos</option>
-            <option value="🛍️ Ferias">🛍️ Ferias</option>
-            <option value="🥳️ Fiestas">🥳️ Fiestas</option>
-            <option value="📚 Otros">📚 Otros</option>
+            <option value="Culturales">🎭 Culturales</option>
+            <option value="Deportes">⚽ Deportes</option>
+            <option value="Educativos">🎓 Educativos</option>
+            <option value="Ferias">🛍️ Ferias</option>
+            <option value="Fiestas">🥳️ Fiestas</option>
+            <option value="Otros">📚 Otros</option>
           </select>
         </div>
 

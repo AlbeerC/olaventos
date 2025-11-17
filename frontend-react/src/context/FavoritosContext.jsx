@@ -88,11 +88,40 @@ export function FavoritosProvider({ children }) {
     return favoritos.some((favorito) => favorito.evento.id === eventoId);
   };
 
+  const contarEventosProximos = (favoritos = []) => {
+    const hoy = new Date();
+
+    return favoritos.filter((fav) => {
+      if (!fav?.evento?.fecha) return false;
+      const fechaEvento = new Date(fav.evento.fecha);
+      return fechaEvento >= hoy;
+    }).length;
+  };
+
+  const generarNotificaciones = (favoritos = []) => {
+    const hoy = new Date();
+
+    return favoritos
+      .filter((fav) => {
+        const fecha = new Date(fav.evento.fecha);
+        const diff = fecha - hoy;
+        const dias = diff / (1000 * 60 * 60 * 24);
+        return dias > 0 && dias <= 7;
+      })
+      .map((fav) => ({
+        id: fav.id,
+        texto: `El evento "${fav.evento.titulo}" es pronto`,
+        leida: false,
+      }));
+  };
+
   const value = {
     cargarFavoritos,
     agregarFavorito,
     eliminarFavorito,
     estaEnFavorito,
+    contarEventosProximos,
+    generarNotificaciones,
     favoritos,
     loading,
     error,

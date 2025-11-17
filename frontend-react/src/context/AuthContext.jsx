@@ -35,7 +35,7 @@ export function AuthProvider ( {children} ) {
 
     // Funciones y estados a exportar
     const value = {
-        user,
+        user, setUser,
         token,
         login,
         logout

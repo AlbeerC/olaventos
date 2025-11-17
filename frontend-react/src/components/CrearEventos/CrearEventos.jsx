@@ -15,7 +15,7 @@ function CrearEventos() {
     descripcion: "",
     fecha: "",
     hora: "",
-    categoria: "🎭 Culturales",
+    categoria: "Culturales",
     lugar: "",
     direccion: "",
     imagen: "",
@@ -31,7 +31,7 @@ function CrearEventos() {
       descripcion: "",
       fecha: "",
       hora: "",
-      categoria: "🎭 Culturales",
+      categoria: "Culturales",
       lugar: "",
       direccion: "",
       imagen: "",
@@ -115,12 +115,12 @@ function CrearEventos() {
               setDatosForm({ ...datosForm, categoria: e.target.value })
             }
           >
-            <option value="🎭 Culturales">🎭 Culturales</option>
-            <option value="⚽ Deportes">⚽ Deportes</option>
-            <option value="🎓 Educativos">🎓 Educativos</option>
-            <option value="🛍️ Ferias">🛍️ Ferias</option>
-            <option value="🥳️ Fiestas">🥳️ Fiestas</option>
-            <option value="📚 Otros">📚 Otros</option>
+            <option value="Culturales">🎭 Culturales</option>
+            <option value="Deportes">⚽ Deportes</option>
+            <option value="Educativos">🎓 Educativos</option>
+            <option value="Ferias">🛍️ Ferias</option>
+            <option value="Fiestas">🥳️ Fiestas</option>
+            <option value="Otros">📚 Otros</option>
           </select>
         </div>
 

@@ -3,27 +3,16 @@ import './PanelUsuario.css';
 import { useAuth } from '../../context/AuthContext';
 import { useFavoritos } from '../../context/FavoritosContext';
 import { toast } from 'react-toastify'
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router'
 import { formatearFecha } from '../../utils/formatearFecha'
+import ModalDatosUsuario from '../ModalDatosUsuario/ModalDatosUsuario';
 
 function PanelUsuario () {
-  // Datos ficticios
-  const notificaciones = [
-    {
-      id: 1,
-      texto: "Nuevo evento en tu categoría favorita",
-      leida: false
-    },
-    {
-      id: 2,
-      texto: "Recordatorio: Conferencia tecnológica mañana",
-      leida: false
-    }
-  ];
 
   const { logout, user } = useAuth()
-  const { favoritos, cargarFavoritos, eliminarFavorito } = useFavoritos()
+  const { favoritos, cargarFavoritos, eliminarFavorito, contarEventosProximos, generarNotificaciones } = useFavoritos()
+  const [modalDatos, setModalDatos] = useState(false)
 
   useEffect(() => {
     cargarFavoritos()
@@ -33,6 +22,9 @@ function PanelUsuario () {
     logout()
     toast.success("Sesión cerrada")
   }
+
+  const proximos = contarEventosProximos(favoritos)
+  const notificaciones = generarNotificaciones(favoritos)
 
   if (!user) {
     return (
@@ -66,8 +58,8 @@ function PanelUsuario () {
                 <Bookmark size={32} />
               </div>
               <div className="stat-content">
-                <div className="stat-numero">6</div>
-                <div className="stat-label">Marcados "Me interesa"</div>
+                <div className="stat-numero">{proximos}</div>
+                <div className="stat-label">Eventos próximos</div>
               </div>
             </div>
           </div>
@@ -82,7 +74,6 @@ function PanelUsuario () {
                     <Bell size={24} />
                   </div>
                   <span className="notificacion-texto">{notif.texto}</span>
-                  <ChevronRight size={20} className="notificacion-arrow" />
                 </div>
               ))}
             </div>
@@ -91,7 +82,7 @@ function PanelUsuario () {
 
         {/* Columna derecha */}
         <div className="columna-derecha">
-          <h2 className="seccion-titulo">Mis eventos</h2>
+          <h2 className="seccion-titulo">Eventos guardados</h2>
           
           {/* Lista de eventos */}
           <div className="eventos-lista">
@@ -124,14 +115,19 @@ function PanelUsuario () {
 
           {/* Gestión de cuenta */}
           <div className="cuenta-seccion">
-            <button className="btn-cuenta">Editar datos personales</button>
-            <button className="btn-cuenta">Cambiar contraseña</button>
+            <button className="btn-cuenta" onClick={() => setModalDatos(true)}>Editar datos personales</button>
             <button className="btn-cerrar-sesion" onClick={cerrarSesion}>
               Cerrar sesión
             </button>
           </div>
         </div>
       </div>
+
+       <ModalDatosUsuario 
+        abrir={modalDatos}
+        cerrar={() => setModalDatos(false)}
+        user={user}
+      />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { useEventos } from "../../context/EventosContext";
 import { useAuth } from "../../context/AuthContext";
 import { useFavoritos } from "../../context/FavoritosContext";
 import { toast } from "react-toastify";
+import SpinnerCargando from "../SpinnerCargando/SpinnerCargando";
 
 function ListaEventos() {
   const [categorias, setCategorias] = useState([]);
@@ -53,14 +54,14 @@ function ListaEventos() {
     if (categoria === 'Todos') return setEventosFiltrados(eventos)
 
     const filtrados = eventos.filter(
-      (e) => e.categoria.split(' ')[1] === categoria
+      (e) => e.categoria === categoria
     )
 
     setEventosFiltrados(filtrados);
   }
 
   if (error) return <p>Error: {error}</p>;
-  if (loading) return <p>Cargando...</p>;
+  if (loading) return <SpinnerCargando />;
 
   return (
     <main className="eventos-main">
