@@ -1,16 +1,119 @@
-# React + Vite
+# 📘 Olaventos – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend de Olaventos, una plataforma web diseñada para conectar a organizadores de eventos con la comunidad de Olavarría.
+Permite explorar eventos locales, filtrarlos, ver información detallada, registrarse como usuario u organizador y administrar eventos según el rol.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React** (con Vite)
+- **JavaScript + JSX**
+- **CSS puro**
+- **React Router DOM**
+- **Context API** (estado global)
+- **Google Maps JavaScript API**
+- **Fetch**
+- **Vercel** (deploy)
 
-## React Compiler
+## 📁 Estructura del Proyecto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+\`\`\`
+src/
+  components/     # Componentes reutilizables de UI
+  pages/          # Vistas principales del sitio
+  context/        # Contextos globales (auth, favoritos, etc.)
+  utils/          # Funciones auxiliares
+  assets/         # Imágenes, íconos, recursos estáticos
+\`\`\`
 
-## Expanding the ESLint configuration
+## ⚙️ Instalación y Ejecución Local
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1️⃣ Clonar el repositorio
+\`\`\`bash
+git clone <url-del-repo>
+\`\`\`
+
+### 2️⃣ Instalar dependencias
+\`\`\`bash
+npm install
+\`\`\`
+
+### 3️⃣ Crear el archivo de variables de entorno
+
+En la raíz del proyecto, crear un archivo `.env`:
+
+\`\`\`env
+VITE_API_URL="https://<tu-backend>/api"
+\`\`\`
+
+### 4️⃣ Ejecutar en modo desarrollo
+\`\`\`bash
+npm run dev
+\`\`\`
+
+## 🔌 Variables de Entorno
+
+| Variable | Descripción |
+|----------|-------------|
+| `VITE_API_URL` | URL base del backend (NestJS + Railway) |
+
+## 🚀 Deploy
+
+El frontend está desplegado en Vercel:
+
+👉 **https://olaventos.vercel.app**
+
+## ✨ Funcionalidades Principales
+
+### 🏠 Página de Inicio
+- Imagen principal + Call To Action
+- Sección "Sobre nosotros"
+- Carrusel automático con eventos destacados
+- Formulario de contacto conectado a correo electrónico
+
+### 🎟️ Exploración de Eventos
+Página "Eventos" con:
+- Lista completa de eventos
+- Filtros por categoría
+- Búsqueda por texto
+- Cada evento incluye imagen, nombre, categoría y fecha.
+
+### 📍 Detalle de Evento
+- Descripción completa
+- Información del organizador
+- Ubicación en Google Maps
+- Botones como "Me interesa", "Agregar a favoritos", etc.
+
+### 🔐 Autenticación
+- Registro e inicio de sesión con email y contraseña
+- **Roles:**
+  - Usuario común
+  - Organizador
+- Acceso a rutas protegidas según el rol
+
+### 🧑‍💼 Paneles de Administración
+
+#### Usuarios Comunes
+- Ver eventos marcados como favoritos o guardados
+
+#### Organizadores
+- Crear, editar y eliminar eventos
+- Gestionar perfil y publicaciones
+
+#### Administradores Generales
+- Aprobar nuevas cuentas de organizadores
+- Gestionar permisos y altas
+
+
+## 🧭 Roadmap / Mejoras Futuras
+
+- Sistema completo de notificaciones
+- Integración con Google Calendar / iCal
+- Favoritos optimizados para móviles
+- Filtros avanzados (fecha, ubicación, precio)
+- Modo oscuro
+- Perfil de usuario más completo
+- Dashboard con estadísticas para organizadores
+
+## 📄 Licencia
+
+Proyecto académico – uso educativo.
