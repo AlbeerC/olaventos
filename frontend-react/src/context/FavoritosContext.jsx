@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const FavoritosContext = createContext();
 
@@ -14,6 +14,15 @@ export function FavoritosProvider({ children }) {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
+
+  useEffect(() => {
+    if (token) {
+      cargarFavoritos();
+    } else {
+      setFavoritos([]);
+      setLoadingFavoritos(false);
+    }
+  }, [token]);
 
   const cargarFavoritos = async () => {
     setLoading(true);

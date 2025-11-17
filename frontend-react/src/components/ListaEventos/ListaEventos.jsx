@@ -15,7 +15,7 @@ function ListaEventos() {
 
   const { eventos, loading, error, cargarEventos } = useEventos();
   const { user } = useAuth();
-  const { agregarFavorito, estaEnFavorito } = useFavoritos();
+  const { agregarFavorito, estaEnFavorito, loading: loadingFavoritos } = useFavoritos();
 
   const cargarCategorias = async () => {
     try {
@@ -61,7 +61,7 @@ function ListaEventos() {
   }
 
   if (error) return <p>Error: {error}</p>;
-  if (loading) return <SpinnerCargando />;
+  if (loading || loadingFavoritos) return <SpinnerCargando />;
 
   return (
     <main className="eventos-main">
