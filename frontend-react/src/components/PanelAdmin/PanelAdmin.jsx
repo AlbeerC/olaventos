@@ -35,7 +35,7 @@ function PanelAdmin() {
 
   const aprobarUsuario = async (userId) => {
     try {
-      const respuesta = await fetch(`${APU_URL}/usuarios/${userId}/approve`, {
+      const respuesta = await fetch(`${API_URL}/usuarios/${userId}/approve`, {
         method: "PATCH",
       })
 
