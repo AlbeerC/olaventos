@@ -16,39 +16,40 @@ Permite explorar eventos locales, filtrarlos, ver información detallada, regist
 
 ## 📁 Estructura del Proyecto
 
-\`\`\`
+```text
 src/
   components/     # Componentes reutilizables de UI
   pages/          # Vistas principales del sitio
   context/        # Contextos globales (auth, favoritos, etc.)
   utils/          # Funciones auxiliares
   assets/         # Imágenes, íconos, recursos estáticos
-\`\`\`
+```
+
 
 ## ⚙️ Instalación y Ejecución Local
 
 ### 1️⃣ Clonar el repositorio
-\`\`\`bash
-git clone <url-del-repo>
-\`\`\`
+```bash
+git clone https://github.com/AlbeerC/olaventos
+```
 
 ### 2️⃣ Instalar dependencias
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 ### 3️⃣ Crear el archivo de variables de entorno
 
 En la raíz del proyecto, crear un archivo `.env`:
 
-\`\`\`env
-VITE_API_URL="https://<tu-backend>/api"
-\`\`\`
+```env
+VITE_API_URL=https://<tu-backend>/api
+```
 
 ### 4️⃣ Ejecutar en modo desarrollo
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 ## 🔌 Variables de Entorno
 
