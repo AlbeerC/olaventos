@@ -20,7 +20,7 @@ export function FavoritosProvider({ children }) {
       cargarFavoritos();
     } else {
       setFavoritos([]);
-      setLoadingFavoritos(false);
+      setLoading(false);
     }
   }, [token]);
 
