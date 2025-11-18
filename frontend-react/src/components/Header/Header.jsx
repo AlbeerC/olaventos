@@ -1,7 +1,7 @@
 import './Header.css'
 import logo from "../../assets/Olaventos-logo.png"
 import { useState } from 'react'
-import { Menu } from 'lucide-react'
+import { Menu, User } from 'lucide-react'
 import { Link } from 'react-router'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate } from 'react-router'
