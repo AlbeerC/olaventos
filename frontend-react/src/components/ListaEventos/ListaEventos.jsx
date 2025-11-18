@@ -10,12 +10,17 @@ import SpinnerCargando from "../SpinnerCargando/SpinnerCargando";
 
 function ListaEventos() {
   const [categorias, setCategorias] = useState([]);
+  const [categoriaActiva, setCategoriaActiva] = useState("Todos");
   const [busqueda, setBusqueda] = useState("");
   const [eventosFiltrados, setEventosFiltrados] = useState([]);
 
   const { eventos, loading, error, cargarEventos } = useEventos();
   const { user } = useAuth();
-  const { agregarFavorito, estaEnFavorito, loading: loadingFavoritos } = useFavoritos();
+  const {
+    agregarFavorito,
+    estaEnFavorito,
+    loading: loadingFavoritos,
+  } = useFavoritos();
 
   const cargarCategorias = async () => {
     try {
@@ -51,17 +56,16 @@ function ListaEventos() {
   }, [busqueda, eventos]);
 
   const filtrarPorCategoria = (categoria) => {
-    if (categoria === 'Todos') return setEventosFiltrados(eventos)
+    setCategoriaActiva(categoria);
+    if (categoria === "Todos") return setEventosFiltrados(eventos);
 
-    const filtrados = eventos.filter(
-      (e) => e.categoria === categoria
-    )
+    const filtrados = eventos.filter((e) => e.categoria === categoria);
 
     setEventosFiltrados(filtrados);
-  }
+  };
 
   if (error) return <p>Error: {error}</p>;
-  if (loading || loadingFavoritos) return <SpinnerCargando />;
+  if (loading) return <SpinnerCargando />;
 
   return (
     <main className="eventos-main">
@@ -82,7 +86,13 @@ function ListaEventos() {
 
         <div className="categorias">
           {categorias.map((cat) => (
-            <button className="boton-categoria" onClick={() => filtrarPorCategoria(cat.nombre)}>
+            <button
+              key={cat.nombre}
+              className={`boton-categoria ${
+                categoriaActiva === cat.nombre ? "activo" : ""
+              }`}
+              onClick={() => filtrarPorCategoria(cat.nombre)}
+            >
               <p class="icono">{cat.icono}</p>
               <p>{cat.nombre}</p>
             </button>
