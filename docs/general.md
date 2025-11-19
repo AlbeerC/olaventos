@@ -1,4 +1,4 @@
-# **Olaventos** - Plataforma de Eventos Locales
+# Olaventos - Plataforma de Eventos Locales
 
 **Olaventos** es una plataforma digital que conecta a organizadores de eventos con la comunidad de Olavarría, ofreciendo un espacio centralizado para la publicación, consulta y seguimiento de actividades culturales, deportivas, educativas, sociales, entre otras.
 

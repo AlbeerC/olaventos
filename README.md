@@ -9,10 +9,11 @@ Este repositorio reúne el código del proyecto final de la carrera, junto con t
 ## 📚 Documentación
 
 - **Visión general del proyecto** → [docs/general.md](./docs/general.md)
-- **Backend (NestJS)** → [docs/backend.md](./docs/backend.md)
-- **Frontend (React)** → [docs/frontend.md](./docs/frontend.md)
-- **Base de datos** → [docs/database.md](./docs/database.md)
+- **Frontend** → [docs/frontend.md](./frontend-react/README.md)
+- **Backend y base de datos** → [docs/backend.md](./docs/backend.md)
 - **Arquitectura** → [docs/arquitectura.md](./docs/arquitectura.md)
+- **Roadmap** → [docs/roadmap.md](./docs/roadmap.md)
+- **Diagrama DB** → [docs/diagrama.png](./docs/diagrama.png)
 
 ---
 
