@@ -2,8 +2,9 @@
 
 ## 📝 Descripción General
 
-Este repositorio contiene el backend del proyecto Olaventos, una plataforma web para la gestión y difusión de eventos locales.
 El backend provee la API REST que permite la autenticación de usuarios, la administración de eventos, la gestión de favoritos y el manejo de roles (usuarios, organizadores y administradores).
+
+**Repositorio Backend** → [AlbeerC/olaventos-backend](https://github.com/AlbeerC/olaventos-backend)
 
 ## 🛠️ Tecnologías Utilizadas
 
