@@ -7,6 +7,7 @@
   padding: 5rem 0 0 5rem;
 }
 
+
 .eventos-main .titles h2 {
   font-size: 4rem;
 }
@@ -15,6 +16,21 @@
   font-size: 2.5rem;
   color: #727272;
   font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .eventos-main .titles {
+    padding: 2rem 0 0 2rem;
+  }
+
+  .eventos-main .titles h2 {
+    font-size: 3rem;
+  }
+
+  .eventos-main .titles h3 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 }
 
 .busqueda-eventos {
@@ -195,8 +211,8 @@
 
   .categorias .boton-categoria {
     flex: 0 0 auto; /* evita que los botones se ajusten o estiren */
-    width: 10rem;
-    font-size: 1.6rem;
+    width: 7rem;
+    font-size: 1.2rem;
   }
 
   .lista-eventos .evento-card {
