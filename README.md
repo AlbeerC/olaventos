@@ -14,6 +14,7 @@ Este repositorio reúne el código del proyecto final de la carrera, junto con t
 - **Arquitectura** → [docs/arquitectura.md](./docs/arquitectura.md)
 - **Roadmap** → [docs/roadmap.md](./docs/roadmap.md)
 - **Diagrama DB** → [docs/diagrama.png](./docs/diagrama.png)
+- **Herramieintas** → [docs/herramientas.md](./docs/herramientas.md)
 
 ---
 
