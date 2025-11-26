@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { formatearFecha } from "../../utils/formatearFecha";
-import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion"
+import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion";
+import { toast } from "react-toastify";
 
 function PanelCreadorCarta({ evento, eliminarEvento, actualizarEvento }) {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -15,6 +16,7 @@ function PanelCreadorCarta({ evento, eliminarEvento, actualizarEvento }) {
     eliminarEvento(eventoAEliminar);
     setModalAbierto(false);
     setEventoAEliminar(null);
+    toast.success("Evento eliminado")
   };
 
   const cancelarEliminar = () => {

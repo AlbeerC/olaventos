@@ -1,4 +1,5 @@
 import "./ActualizarEvento.css";
+import { toast } from "react-toastify";
 
 function ActualizarEvento({
   actualizarEvento,
@@ -8,15 +9,17 @@ function ActualizarEvento({
   setFormEdit,
   cancelarActualizar
 }) {
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    actualizarEvento(eventoEditando.id, formEdit);
+    setEventoEditando(null);
+    toast.success("Evento actualizado")
+  }
+
   return (
     <div className="formulario-evento form-editar-evento">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          actualizarEvento(eventoEditando.id, formEdit);
-          setEventoEditando(null); // Cerramos el formulario
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <div className="campo">
           <label for="titulo">Título del Evento</label>
           <input
