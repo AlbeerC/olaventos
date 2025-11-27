@@ -75,4 +75,4 @@ La plataforma está diseñada para ofrecer una experiencia intuitiva, simple y a
 
 ## 🌍 **Impacto Esperado**
 
-**Olaventos** aspira a ser el principal canal digital de difusió
+**Olaventos** aspira a convertirse en el principal canal digital de difusión de actividades locales, fortaleciendo el crecimiento cultural, social y económico de la ciudad. La plataforma fomentará la participación ciudadana, la visibilidad de iniciativas locales y la planificación eficiente del tiempo libre de los usuarios.
