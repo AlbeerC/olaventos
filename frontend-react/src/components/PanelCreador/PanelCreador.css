@@ -44,7 +44,7 @@
 }
 
 /* Card de evento */
-.eventos-creador .evento {
+.eventos-creador .evento-creador {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -58,41 +58,41 @@
   max-width: 100%;
 }
 
-.eventos-creador .evento img {
-  width: 12rem;
+.eventos-creador .evento-creador img {
+  width: 100%;
   height: 15rem;
   object-fit: cover;
   border-radius: 1rem;
   flex-shrink: 0;
 }
 
-.eventos-creador .evento > * {
+.eventos-creador .evento-creador > * {
   flex: 1;
   min-width: 0;
 }
 
-.evento .arriba,
-.evento p,
-.evento .botones {
+.evento-creador .arriba,
+.evento-creador p,
+.evento-creador .botones {
   width: 100%;
 }
 
-.evento .arriba h3 {
+.evento-creador .arriba h3 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.evento .arriba span {
+.evento-creador .arriba span {
   color: #888;
   font-size: 1.4rem;
 }
 
-.evento p {
+.evento-creador p {
   font-size: 1.5rem;
   color: #333;
 }
 
-.evento .fecha {
+.evento-creador .fecha {
     text-align: center;
 }
 
@@ -142,12 +142,12 @@
 
 
 @media (max-width: 768px) {
-  .evento {
-    flex-direction: column;
-    align-items: flex-start;
+  .evento-creador {
+    flex-direction: column !important;
+    align-items: flex-start !important;
   }
 
-  .evento img {
+  .evento-creador img {
     width: 100%;
     height: auto;
   }
