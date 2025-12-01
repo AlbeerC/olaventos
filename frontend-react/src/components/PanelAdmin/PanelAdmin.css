@@ -221,3 +221,17 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+.btn-cuenta {
+  padding: 16px 24px;
+  background: var(--color-blanco);
+  border: 2px solid var(--color-borde);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  margin: 2rem;
+}

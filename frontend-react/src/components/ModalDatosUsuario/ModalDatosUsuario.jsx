@@ -103,7 +103,7 @@ function ModalDatosUsuario({ abrir, cerrar, user }) {
   if (!abrir) return null;
 
   return (
-    <div className="modal-overlay" onClick={cerrar}>
+    <div className="modal-overlay" >
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>Editar Perfil</h2>

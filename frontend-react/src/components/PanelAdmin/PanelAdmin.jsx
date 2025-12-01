@@ -1,109 +1,113 @@
-import "./PanelAdmin.css"
-import { useAuth } from "../../context/AuthContext"
-import { useEffect, useState } from "react"
-import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion"
+import "./PanelAdmin.css";
+import { useAuth } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
+import ModalConfirmacion from "../ModalConfirmacion/ModalConfirmacion";
+import ModalDatosUsuario from "../ModalDatosUsuario/ModalDatosUsuario";
 
 function PanelAdmin() {
-  const API_URL = import.meta.env.VITE_API_URL
+  const API_URL = import.meta.env.VITE_API_URL;
 
-  const { user, logout } = useAuth()
-  const [usuarios, setUsuarios] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [modalEliminarAbierto, setModalEliminarAbierto] = useState(false)
-  const [modalAprobarAbierto, setModalAprobarAbierto] = useState(false)
-  const [selectedUserId, setSelectedUserId] = useState(null)
+  const { user, logout } = useAuth();
+  const [usuarios, setUsuarios] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [modalEliminarAbierto, setModalEliminarAbierto] = useState(false);
+  const [modalAprobarAbierto, setModalAprobarAbierto] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [modalDatos, setModalDatos] = useState(false);
 
   useEffect(() => {
     const cargarOrganizadores = async () => {
       try {
-        setLoading(true)
-        const respuesta = await fetch(`${API_URL}/usuarios/organizadores`)
+        setLoading(true);
+        const respuesta = await fetch(`${API_URL}/usuarios/organizadores`);
 
-        if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`)
+        if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`);
 
-        const resultado = await respuesta.json()
-        setUsuarios(resultado)
+        const resultado = await respuesta.json();
+        setUsuarios(resultado);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    cargarOrganizadores()
-  }, [])
+    cargarOrganizadores();
+  }, []);
 
   const aprobarUsuario = async (userId) => {
     try {
       const respuesta = await fetch(`${API_URL}/usuarios/${userId}/approve`, {
         method: "PATCH",
-      })
+      });
 
-      if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`)
+      if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`);
 
-      const resultado = await respuesta.json()
+      const resultado = await respuesta.json();
       setUsuarios((prev) =>
-        prev.map((user) => (user.id === userId ? { ...user, aprobado: true } : user))
-      )
+        prev.map((user) =>
+          user.id === userId ? { ...user, aprobado: true } : user
+        )
+      );
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const eliminarUsuario = async (userId) => {
     try {
       const respuesta = await fetch(`${API_URL}/usuarios/${userId}`, {
         method: "DELETE",
-      })
+      });
 
-      if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`)
+      if (!respuesta.ok) throw new Error(`HTTP error: ${respuesta.status}`);
 
-      setUsuarios((prev) => prev.filter((user) => user.id !== userId))
+      setUsuarios((prev) => prev.filter((user) => user.id !== userId));
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   // --- ELIMINAR ---
   const handleEliminarClick = (id) => {
-    setSelectedUserId(id)
-    setModalEliminarAbierto(true)
-  }
+    setSelectedUserId(id);
+    setModalEliminarAbierto(true);
+  };
 
   const confirmarEliminar = () => {
-    if (selectedUserId) eliminarUsuario(selectedUserId)
-    setModalEliminarAbierto(false)
-    setSelectedUserId(null)
-  }
+    if (selectedUserId) eliminarUsuario(selectedUserId);
+    setModalEliminarAbierto(false);
+    setSelectedUserId(null);
+  };
 
   const cancelarEliminar = () => {
-    setModalEliminarAbierto(false)
-    setSelectedUserId(null)
-  }
+    setModalEliminarAbierto(false);
+    setSelectedUserId(null);
+  };
 
   // --- APROBAR ---
   const handleAprobarClick = (id) => {
-    setSelectedUserId(id)
-    setModalAprobarAbierto(true)
-  }
+    setSelectedUserId(id);
+    setModalAprobarAbierto(true);
+  };
 
   const confirmarAprobar = () => {
-    if (selectedUserId) aprobarUsuario(selectedUserId)
-    setModalAprobarAbierto(false)
-    setSelectedUserId(null)
-  }
+    if (selectedUserId) aprobarUsuario(selectedUserId);
+    setModalAprobarAbierto(false);
+    setSelectedUserId(null);
+  };
 
   const cancelarAprobar = () => {
-    setModalAprobarAbierto(false)
-    setSelectedUserId(null)
-  }
+    setModalAprobarAbierto(false);
+    setSelectedUserId(null);
+  };
 
   if (!user || user.rol !== "admin") {
     return (
       <div className="pagina-bloqueada">
         <p>No tenés permisos para acceder a este panel</p>
       </div>
-    )
+    );
   }
 
   return (
@@ -198,9 +202,20 @@ function PanelAdmin() {
         onCancel={cancelarAprobar}
       />
 
-      <button className="btn-cerrar-sesion" onClick={logout}>Cerrar sesión</button>
+      <button className="btn-cerrar-sesion" onClick={logout}>
+        Cerrar sesión
+      </button>
+      <button className="btn-cuenta" onClick={() => setModalDatos(true)}>
+        Editar datos personales
+      </button>
+
+      <ModalDatosUsuario
+        abrir={modalDatos}
+        cerrar={() => setModalDatos(false)}
+        user={user}
+      />
     </div>
-  )
+  );
 }
 
-export default PanelAdmin
+export default PanelAdmin;
