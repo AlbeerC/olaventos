@@ -45,23 +45,23 @@ function ListaEventos() {
   useEffect(() => {
     const term = busqueda.toLowerCase();
 
-    const filtrados = eventos.filter(
-      (e) =>
+    const filtrados = eventos.filter((e) => {
+      const coincideBusqueda =
         e.titulo.toLowerCase().includes(term) ||
         e.categoria.toLowerCase().includes(term) ||
-        e.lugar.toLowerCase().includes(term)
-    );
+        e.lugar.toLowerCase().includes(term);
+
+      const coincideCategoria =
+        categoriaActiva === "Todos" || e.categoria === categoriaActiva;
+
+      return coincideBusqueda && coincideCategoria;
+    });
 
     setEventosFiltrados(filtrados);
-  }, [busqueda, eventos]);
+  }, [busqueda, categoriaActiva, eventos]);
 
   const filtrarPorCategoria = (categoria) => {
     setCategoriaActiva(categoria);
-    if (categoria === "Todos") return setEventosFiltrados(eventos);
-
-    const filtrados = eventos.filter((e) => e.categoria === categoria);
-
-    setEventosFiltrados(filtrados);
   };
 
   if (error) return <p>Error: {error}</p>;
