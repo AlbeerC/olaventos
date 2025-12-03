@@ -203,7 +203,7 @@
 }
 
 
-.btn-cerrar-sesion {
+.btn-cerrar-sesion-admin {
   padding: 16px 24px;
   background: var(--color-texto);
   border: none;
@@ -216,13 +216,13 @@
   margin-top: 5rem;
 }
 
-.btn-cerrar-sesion:hover {
+.btn-cerrar-sesion-admin:hover {
   background-color: #000000;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn-cuenta {
+.btn-cuenta-admin {
   padding: 16px 24px;
   background: var(--color-blanco);
   border: 2px solid var(--color-borde);

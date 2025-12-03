@@ -202,10 +202,10 @@ function PanelAdmin() {
         onCancel={cancelarAprobar}
       />
 
-      <button className="btn-cerrar-sesion" onClick={logout}>
+      <button className="btn-cerrar-sesion-admin" onClick={logout}>
         Cerrar sesión
       </button>
-      <button className="btn-cuenta" onClick={() => setModalDatos(true)}>
+      <button className="btn-cuenta-admin" onClick={() => setModalDatos(true)}>
         Editar datos personales
       </button>
 
